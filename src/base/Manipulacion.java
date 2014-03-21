@@ -85,11 +85,8 @@ public class Manipulacion {
     public static void modificarDimensiones(int nAncho, int nAlto) {
         if (rasterImg == null) return;
         
-        //BufferedImage buffOut = new BufferedImage(nAncho, nAlto, tipoImg);
-        //Raster rasterOut = buffOut.getData();
-        //buffImg.setData(rasterImg);
-        //dstImg = rasterOut.createCompatibleWritableRaster();
         dstImg = rasterImg.createCompatibleWritableRaster(nAncho, nAlto);
+        buffOutImg = new BufferedImage(nAncho, nAlto, tipoImg);
     }
     
 }

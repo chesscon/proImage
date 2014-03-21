@@ -26,14 +26,18 @@ public class TamanioImg extends Manipulacion {
         int [] pixel = null;
         int cant;
         int red, green, blue;
-        for (int i = 0, in = 0; i < anchoImg; i+=nAncho, in++) {
-            for (int j = 0, jn = 0; j < altoImg; j+=nAlto, jn++) {
+        
+        int proporX = anchoImg/nAncho;
+        int proporY = altoImg/nAlto;
+        
+        for (int i = 0, in = 0; i < anchoImg; i+=proporX, in++) {
+            for (int j = 0, jn = 0; j < altoImg; j+=proporY, jn++) {
                 red = 0;
                 green = 0;
                 blue = 0;
                 cant = 0;
-                for (int i2 = 0; i2 < nAncho && (i2+i) < anchoImg; i2++) {
-                    for (int j2 = 0; j2 < nAlto && (j2+j) < altoImg; j2++) {
+                for (int i2 = 0; i2 < proporX && (i2+i) < anchoImg; i2++) {
+                    for (int j2 = 0; j2 < proporY && (j2+j) < altoImg; j2++) {
                         pixel = rasterImg.getPixel(i2+i, j2+j, pixel);
                         red += pixel[0];
                         green += pixel[1];
@@ -49,7 +53,7 @@ public class TamanioImg extends Manipulacion {
                 dstImg.setSample(in, jn, 2, blue); 
             }
         }
-        //buffImg.setData(dstImg);
-        return buffImg;
+        buffOutImg.setData(dstImg);
+        return buffOutImg;
     }
 }
