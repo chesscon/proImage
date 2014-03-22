@@ -28,7 +28,11 @@ public class Manipulacion {
     // para poder garantizar que la imagen se cargará adecuadamente
     public static void cargarImagen(String name) throws IOException {
         File file = new File(name);
-        buffImg = ImageIO.read(file);
+        cargarImagen(file);
+    }
+    
+    protected static void cargarImagen(File f) throws IOException {
+        buffImg = ImageIO.read(f);
         tipoImg = buffImg.getType();
         anchoImg = buffImg.getWidth();
         altoImg = buffImg.getHeight();
