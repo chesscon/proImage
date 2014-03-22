@@ -13,7 +13,9 @@ import transformaciones.TamanioImg;
 public class TestTamanio {
     
     public static void main (String args[]) throws IOException, ProImageException {
-        testTamanio1();
+        //testTamanio1();
+        //testCombinarVertical();
+        testCombinarHorizontal();
     }
 
     /**
@@ -23,5 +25,15 @@ public class TestTamanio {
     public static void testTamanio1() throws IOException, ProImageException {
         Manipulacion.generarImagen("imgs/pinguinos600_393.jpg", 
                 TamanioImg.reducir1("imgs/pinguinos.jpg", 600, 393));
+    }
+
+    private static void testCombinarVertical() throws IOException, ProImageException {
+        Manipulacion.generarImagen("imgs/pinguinos_com2Vertical.jpg", 
+                TamanioImg.combinarVertical("imgs/pinguinos.jpg", "imgs/pinguinos.jpg", 600, 393));
+    }
+
+    private static void testCombinarHorizontal() throws IOException, ProImageException {
+        Manipulacion.generarImagen("imgs/ping" + "uinos_com2Horizontal.jpg", 
+                TamanioImg.combinarHorizontal("imgs/pinguinos.jpg", "imgs/pinguinos.jpg", 600, 393));
     }
 }
