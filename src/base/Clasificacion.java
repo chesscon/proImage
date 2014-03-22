@@ -1,6 +1,8 @@
 
 package base;
 
+import static base.Manipulacion.cargarImagen;
+import static base.Manipulacion.obtenerColorPromedio;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileFilter;
@@ -32,16 +34,26 @@ public class Clasificacion extends Manipulacion {
                 System.out.println("No hay imagenes jpg en la ruta especificada.");
                 return;
             }
-            System.out.println("Se encontraron: " + imagenes.length + "imagenes"
+            System.out.println("Se encontraron: " + imagenes.length + " imagenes"
                     + "para ser procesadas....");
             int i = 0;
             for (File f : imagenes) {
-                System.out.println(++i + " Procesando el archivo: " + f.getName());
-                cargarImagen(f);
-                int colorProm[] = obtenerColorPromedio(0,0, anchoImg, altoImg);
-                String aux = colorProm[0] + " " + colorProm[1] + " " 
-                        + colorProm[2] + " " + f.getName();
-                out.println(aux);
+                ++i;
+                if (i%1000 == 0) {
+                    System.out.println("Se han procesado: " + i + "imagenes...");
+                }
+                //if (i<9770 || i>9980) continue;
+                //System.out.println(++i + " Procesando el archivo: " + f.getName());
+                try {
+                    cargarImagen(f);
+                    int colorProm[] = obtenerColorPromedio(0,0, anchoImg, altoImg);
+                    String aux = colorProm[0] + " " + colorProm[1] + " " 
+                            + colorProm[2] + " " + f.getName();
+                    out.println(aux);
+                } catch (Exception ex) {
+                    System.out.println("Ocurrio una excepcion ");
+                    System.out.println("al procesar el archivo: " + f.getName());
+                }
             }
             buffer.close();
             out.close();
