@@ -13,6 +13,8 @@ import javax.imageio.ImageIO;
  * @author oscahern
  */
 public class Manipulacion {
+    
+    private static boolean imagenCargada = false;
     protected static BufferedImage buffImg;
     protected static BufferedImage buffOutImg;
     protected static Raster rasterImg;
@@ -36,6 +38,7 @@ public class Manipulacion {
         dstImg = rasterImg.createCompatibleWritableRaster();    
         //buffOutImg = new BufferedImage();
         buffOutImg = new BufferedImage(anchoImg, altoImg, tipoImg);
+        imagenCargada = true;
     }
     
     public static void generarImagen(String name, BufferedImage img) 
@@ -83,10 +86,47 @@ public class Manipulacion {
     }
     
     public static void modificarDimensiones(int nAncho, int nAlto) {
-        if (rasterImg == null) return;
+        if (!imagenCargada || rasterImg == null) return;
         
         dstImg = rasterImg.createCompatibleWritableRaster(nAncho, nAlto);
         buffOutImg = new BufferedImage(nAncho, nAlto, tipoImg);
+    }
+    
+    /**
+     * Obtiene el color promedio de una una región (determinada por las 
+     * coordenadas de la esquina superior derecha, su ancho y su alto) de la
+     * imagen que ha sido cargada (previamente)
+     * @param x coordenada en el eje x desde donde se empezará a calcular el 
+     * color promedio
+     * @param y coordenada en el eje x desde donde se empezará a calcular el 
+     * color promedio
+     * @param ancho ancho del área que se calculara el color promedio
+     * @param alto alto del área que se calculara el color promedio
+     * @return el arreglo con el color promedio (en la posición 0 el rojo, 
+     * en la 1 el verde y en la 2 el azul).
+     */
+    protected static int[] obtenerColorPromedio(int x, int y, int ancho, int alto) {
+        if (!imagenCargada) return null;
+        int [] promedio = new int[3];
+        x = Math.abs(x);
+        y = Math.abs(y);
+        int [] pixel = new int[3];
+        int maxX = x+ancho > anchoImg ? anchoImg : x+ancho;
+        int maxY = y+alto > altoImg ? alto : y+alto;
+        int cont = 0;
+        for (int i = x; i < maxX; i++) {
+            for (int j = y; j < maxY; j++) {
+                cont++;
+                pixel = rasterImg.getPixel(i, j, pixel);
+                promedio[0] += pixel[0];
+                promedio[1] += pixel[1];
+                promedio[2] += pixel[2];
+            }
+        }
+        promedio[0] /= cont;
+        promedio[1] /= cont;
+        promedio[2] /= cont;
+        return promedio;
     }
     
 }
