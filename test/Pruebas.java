@@ -2,16 +2,9 @@
 import base.Manipulacion;
 import base.ProImageException;
 import filtros.Convolucion;
-import java.awt.image.DataBuffer;
 import java.io.IOException;
 import filtros.FiltrosRGB;
-import filtros.Histograma;
-import java.awt.image.BufferedImage;
-import java.awt.image.Raster;
-import java.awt.image.SampleModel;
-import java.awt.image.WritableRaster;
-import java.io.File;
-import javax.imageio.ImageIO;
+
 
 /**
  *
@@ -29,12 +22,13 @@ public class Pruebas {
         //Manipulacion.generarImagen("imgs/pinguinoesGris11.jpg");
         //testConvolusionIdentidad();
         //testConvolusiones();
-        testHistograma();
+        //testHistograma();
+        testBlending();
     }
     
     public static void testReducir1() throws IOException, ProImageException {
-        Manipulacion.generarImagen("imgs/pinguinoesReduc1_600-400.jpg", 
-                transformaciones.TamanioImg.reducir1("imgs/pinguinos.jpg", 600, 400));
+        Manipulacion.generarImagen("imgs/pinguinosReduc1_800-600.jpg", 
+                transformaciones.TamanioImg.reducir("imgs/pinguinos.jpg", 800, 600));
     }
     
     public static void testImagenAleatoria() throws IOException {
@@ -97,6 +91,25 @@ public class Pruebas {
     public static void testHistograma() throws IOException, ProImageException {
         Manipulacion.generarImagen("imgs/pinguinosAcuarela10.jpg", 
                 filtros.Histograma.acuarela("imgs/pinguinos.jpg"));
+    }
+    
+    public static void testBlending() throws IOException, ProImageException {
+        Manipulacion.generarImagen("imgs/blending100.jpg", 
+                filtros.Combinacion.blending("imgs/pinguino.jpg", 
+                        "imgs/girasoles.jpg", 1));
+        
+        Manipulacion.generarImagen("imgs/blending0.jpg", 
+                filtros.Combinacion.blending("imgs/pinguino.jpg", 
+                        "imgs/girasoles.jpg", 0));
+        
+        Manipulacion.generarImagen("imgs/blending25.jpg", 
+                filtros.Combinacion.blending("imgs/pinguino.jpg", 
+                        "imgs/girasoles.jpg", 0.25));
+        
+        Manipulacion.generarImagen("imgs/blending50.jpg", 
+                filtros.Combinacion.blending("imgs/pinguino.jpg", 
+                        "imgs/girasoles.jpg", 0.5));
+        
     }
     
 }
