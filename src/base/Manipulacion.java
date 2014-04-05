@@ -31,6 +31,20 @@ public class Manipulacion {
         cargarImagen(file);
     }
     
+    public static void cargarImagen(BufferedImage buff) {
+        buffImg = buff;
+        tipoImg = buffImg.getType();
+        anchoImg = buffImg.getWidth();
+        altoImg = buffImg.getHeight();
+        //Graphics g = buffImg.getGraphics(); 
+        rasterImg = buffImg.getData();
+        //buffImg.setData(rasterImg);
+        dstImg = rasterImg.createCompatibleWritableRaster();    
+        //buffOutImg = new BufferedImage();
+        buffOutImg = new BufferedImage(anchoImg, altoImg, tipoImg);
+        imagenCargada = true;
+    }
+    
     protected static void cargarImagen(File f) throws IOException {
         buffImg = ImageIO.read(f);
         tipoImg = buffImg.getType();
