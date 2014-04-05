@@ -10,9 +10,11 @@ nbproject/
 *.DS_Store
 *.swp
 *.out
+*.jpg
 
 # Package Files #
 *.jar
 *.war
 *.ear
 /build/
+/imgs
