@@ -11,6 +11,7 @@ nbproject/
 *.swp
 *.out
 *.jpg
+*.png
 
 # Package Files #
 *.jar
