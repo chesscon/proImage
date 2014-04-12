@@ -25,7 +25,7 @@ public class ProImageFrame extends JFrame {
   /*
    * El ancho que tendra la ventana
    */
-  private final int ANCHO = 650;
+  private final int ANCHO = 700;
     
     /*
      * El alto que tendra la ventana
