@@ -102,14 +102,14 @@ public class Pruebas {
                 filtros.Combinacion.blending("imgs/pinguino.jpg", 
                         "imgs/girasoles.jpg", 0));
         
-        /*Manipulacion.generarImagen("imgs/blending25.jpg", 
+        Manipulacion.generarImagen("imgs/blending25.jpg", 
                 filtros.Combinacion.blending("imgs/pinguino.jpg", 
                         "imgs/girasoles.jpg", 0.25));
-        */
-        /*Manipulacion.generarImagen("imgs/blending50.jpg", 
+        
+        Manipulacion.generarImagen("imgs/blending50.jpg", 
                 filtros.Combinacion.blending("imgs/pinguino.jpg", 
                         "imgs/girasoles.jpg", 0.5));
-        */
+        
     }
     
 }

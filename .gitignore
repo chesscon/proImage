@@ -10,19 +10,9 @@ nbproject/
 *.DS_Store
 *.swp
 *.out
-*.jpg
-<<<<<<< HEAD
-=======
-*.png
->>>>>>> 8cd26751d8ba7461089b1230762a92b91fbce39b
 
 # Package Files #
 *.jar
 *.war
 *.ear
 /build/
-<<<<<<< HEAD
-/imgs
-=======
-/imgs/
->>>>>>> 8cd26751d8ba7461089b1230762a92b91fbce39b
