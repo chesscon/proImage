@@ -122,7 +122,7 @@ public class FiltrosRGB extends Manipulacion {
         for (int i = 0; i < altoImg; i++) {
             for (int j = 0; j < anchoImg; j++) {
                 pixel = rasterImg.getPixel(j, i, pixel);
-                if (i==j && i > 500 && j <600) {
+                /*if (i==j && i > 500 && j <600) {
                     System.out.println("Set sample es: ");
                     System.out.println("0: " + rasterImg.getSample(j, i, 0));
                     System.out.println("1: " + rasterImg.getSample(j, i, 1));
@@ -131,7 +131,7 @@ public class FiltrosRGB extends Manipulacion {
                     for (int k = 0; k < pixel.length; k++) {
                         System.out.println(k+ ": " + pixel[k]);
                     }
-                }
+                }*/
                 int [] newPixel =new int[3];
                 gris = (pixel[0] + pixel[1] + pixel[2])/3;
                 newPixel[0] = gris;

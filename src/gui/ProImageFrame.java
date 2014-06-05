@@ -186,10 +186,22 @@ public class ProImageFrame extends JFrame {
     JMenuBar barMenu = new JMenuBar();
     
     JMenu menuArchivo = initMenuArchivo();
-    JMenu menuFiltros = initMenuFiltros();
+    JMenu menuFiltrosBasicos = initMenuFiltrosBasicos();
+    JMenu menuConvolucion = initMenuFiltrosConvolucion();
+    JMenu menuTransformaciones = initMenuTransformaciones();
+    JMenu menuTonos = initMenuTonos();
+    JMenu menuMosaicos = initMenuMosaicos();
+    JMenu menuBlending = initMenuBlending();    
+    JMenu menuOtros = initMenuOtros();
     
     barMenu.add(menuArchivo);
-    barMenu.add(menuFiltros);
+    barMenu.add(menuFiltrosBasicos);
+    barMenu.add(menuConvolucion);
+    barMenu.add(menuTransformaciones);
+    barMenu.add(menuTonos);
+    barMenu.add(menuMosaicos);
+    barMenu.add(menuBlending);
+    barMenu.add(menuOtros);
     
     this.setJMenuBar(barMenu);
   }
@@ -200,7 +212,7 @@ public class ProImageFrame extends JFrame {
    */
   private JMenu initMenuArchivo() {
     JMenu menuArchivo = new JMenu(ListenerMenuArchivo.MENU_ARCHIVO);
-    ListenerMenuArchivo action = new ListenerMenuArchivo(this);
+    ListenerMenuArchivo action = new ListenerMenuArchivo(this, this.panelImgSource);
     
     JMenuItem guardar = new JMenuItem(ListenerMenuArchivo.STR_MENU_ARCHIVO_GUARDAR);
     guardar.setName(ListenerMenuArchivo.INT_MENU_ARCHIVO_GUARDAR + "");
@@ -226,11 +238,115 @@ public class ProImageFrame extends JFrame {
    * la imagen que se debe cargar previamente
    * @return una instancia del menu para Filtros
    */
-  private JMenu initMenuFiltros() {
+  private JMenu initMenuFiltrosBasicos() {
     JMenu menuFiltros = new JMenu(ListenerMenuFiltros.MENU_FILTROS);
-    ListenerMenuFiltros action = new ListenerMenuFiltros();
+    ListenerMenuFiltros action = new ListenerMenuFiltros(this.panelImgSource, this.panelImgTarget);
+    
+    JMenuItem brillo = new JMenuItem(ListenerMenuFiltros.STR_MENU_FILTROS_BRILLO);
+    brillo.setName(ListenerMenuFiltros.INT_MENU_FILTROS_BRILLO + "");
+    brillo.addActionListener(action);
+    
+    JMenu contraste = new JMenu(ListenerMenuFiltros.STR_MENU_FILTROS_CONTRASTE);
+    contraste.setName(ListenerMenuFiltros.INT_MENU_FILTROS_CONTRASTE + "");
+    //contraste.addActionListener(action);
+    
+    JMenuItem contraste1 = new JMenuItem(ListenerMenuFiltros.STR_MENU_FILTROS_CONTRASTE1);
+    contraste1.setName(ListenerMenuFiltros.INT_MENU_FILTROS_CONTRASTE1 + "");
+    contraste1.addActionListener(action);
+    
+    JMenuItem contraste2 = new JMenuItem(ListenerMenuFiltros.STR_MENU_FILTROS_CONTRASTE2);
+    contraste2.setName(ListenerMenuFiltros.INT_MENU_FILTROS_CONTRASTE2     + "");
+    contraste2.addActionListener(action);
+    
+    contraste.add(contraste1);
+    contraste.add(contraste2);
+    
+    JMenu color = new JMenu(ListenerMenuFiltros.STR_MENU_FILTROS_COLOR);
+    color.setName(ListenerMenuFiltros.INT_MENU_FILTROS_COLOR + "");
+    //color.addActionListener(action);
+    
+    JMenuItem rojo = new JMenuItem(ListenerMenuFiltros.STR_MENU_FILTROS_ROJO);
+    rojo.setName(ListenerMenuFiltros.INT_MENU_FILTROS_ROJO + "");
+    rojo.addActionListener(action);
+    
+    JMenuItem verde = new JMenuItem(ListenerMenuFiltros.STR_MENU_FILTROS_VERDE);
+    verde.setName(ListenerMenuFiltros.INT_MENU_FILTROS_VERDE + "");
+    verde.addActionListener(action);
+    
+    JMenuItem azul = new JMenuItem(ListenerMenuFiltros.STR_MENU_FILTROS_AZUL);
+    azul.setName(ListenerMenuFiltros.INT_MENU_FILTROS_AZUL + "");
+    azul.addActionListener(action);
+    
+    JMenuItem otro = new JMenuItem(ListenerMenuFiltros.STR_MENU_FILTROS_OTRO);
+    otro.setName(ListenerMenuFiltros.INT_MENU_FILTROS_OTRO + "");
+    otro.addActionListener(action);
+    
+    color.add(rojo);
+    color.add(verde);
+    color.add(azul);
+    color.add(otro);
+    
+    JMenu gris = new JMenu(ListenerMenuFiltros.STR_MENU_FILTROS_GRIS);
+    gris.setName(ListenerMenuFiltros.INT_MENU_FILTROS_GRIS + "");
+    //gris.addActionListener(action);
+    
+    JMenuItem gris1 = new JMenuItem(ListenerMenuFiltros.STR_MENU_FILTROS_GRIS1);
+    gris1.setName(ListenerMenuFiltros.INT_MENU_FILTROS_GRIS1 + "");
+    gris1.addActionListener(action);
+    
+    JMenuItem gris2 = new JMenuItem(ListenerMenuFiltros.STR_MENU_FILTROS_GRIS2);
+    gris2.setName(ListenerMenuFiltros.INT_MENU_FILTROS_GRIS2 + "");
+    gris2.addActionListener(action);
+    
+    JMenuItem gris3 = new JMenuItem(ListenerMenuFiltros.STR_MENU_FILTROS_GRIS3);
+    gris3.setName(ListenerMenuFiltros.INT_MENU_FILTROS_GRIS3 + "");
+    gris3.addActionListener(action);
+    
+    gris.add(gris1);
+    gris.add(gris2);
+    gris.add(gris3);
+    
+    JMenuItem ruido = new JMenuItem(ListenerMenuFiltros.STR_MENU_FILTROS_RUIDO);
+    ruido.setName(ListenerMenuFiltros.INT_MENU_FILTROS_RUIDO + "");
+    ruido.addActionListener(action);
+    
+    menuFiltros.add(contraste);
+    menuFiltros.add(brillo);
+    menuFiltros.add(color);
+    menuFiltros.add(gris);
+    menuFiltros.add(ruido);
     
     return menuFiltros;
   }
+
+    private JMenu initMenuFiltrosConvolucion() {
+        JMenu menuConvolucion = new JMenu();
+        return menuConvolucion;
+    }
+
+    private JMenu initMenuTransformaciones() {
+        JMenu menu = new JMenu();
+        return menu;
+    }
+
+    private JMenu initMenuTonos() {
+        JMenu menu = new JMenu();
+        return menu;
+    }
+
+    private JMenu initMenuMosaicos() {
+        JMenu menu = new JMenu();
+        return menu;
+    }
+
+    private JMenu initMenuBlending() {
+        JMenu menu = new JMenu();
+        return menu;
+    }
+
+    private JMenu initMenuOtros() {
+        JMenu menu = new JMenu();
+        return menu;
+    }
   
 }

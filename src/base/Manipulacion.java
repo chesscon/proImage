@@ -61,11 +61,16 @@ public class Manipulacion {
     
     public static void generarImagen(String name, BufferedImage img) 
             throws IOException {
+        generarImagen(new File(name), img);        
+    }
+    
+    public static void generarImagen(File f, BufferedImage img) 
+            throws IOException {
         if (img == null) {
             System.out.println("Error!, el buffer de la imagen esta vacio!");
         } else {
-            System.out.println("Escribiendo en el archivo: " + name);
-            ImageIO.write(img, "jpg", new File(name));        
+            System.out.println("Escribiendo en el archivo: " + f.getName());
+            ImageIO.write(img, "jpg", f);        
             System.out.println("La imagen esta lista!");
         }
     }

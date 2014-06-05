@@ -59,12 +59,15 @@ class ListenerMenuArchivo implements ActionListener {
    */
   private ProImageFrame frame;
   
+  private JPanelImagen panelSrc;
+  
   /**
    * Constructor que recibe la vista en donde se cargan los datos
    * @param vista El frame donde se cargarán los datos
    */
-  public ListenerMenuArchivo(ProImageFrame vista) {
+  public ListenerMenuArchivo(ProImageFrame vista, JPanelImagen panel) {
     this.frame = vista;
+    this.panelSrc = panel;
   }
   
   /**
@@ -103,12 +106,8 @@ class ListenerMenuArchivo implements ActionListener {
 
     //Si seleccionamos algún archivo devolveremos su directorio
     if (chooser.showOpenDialog(frame) == JFileChooser.APPROVE_OPTION) {
-      try {
-        System.out.println(chooser.getSelectedFile().getName());
-        Scanner lc = new Scanner(chooser.getSelectedFile());
-        String pos = lc.next().trim();
-        // this.tablero.setPosPSY(pos);
-      } catch (FileNotFoundException ex) { }
+        String pathFile = chooser.getSelectedFile().getAbsolutePath();        
+        panelSrc.setImagen(pathFile);
     } 
   }
 
