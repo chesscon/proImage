@@ -320,32 +320,95 @@ public class ProImageFrame extends JFrame {
   }
 
     private JMenu initMenuFiltrosConvolucion() {
-        JMenu menuConvolucion = new JMenu();
+        JMenu menuConvolucion = new JMenu(ListenerFiltrosConvolucion.MENU_CONVOLUCION);
+        ListenerFiltrosConvolucion action = new ListenerFiltrosConvolucion();
+        
+        JMenu blur = new JMenu(ListenerFiltrosConvolucion.STR_MENU_BLUR);
+        blur.setName(ListenerFiltrosConvolucion.INT_MENU_BLUR + "");   
+        
+        JMenuItem blur1 = new JMenuItem(ListenerFiltrosConvolucion.STR_MENU_BLUR1);
+        blur1.setName(ListenerFiltrosConvolucion.INT_MENU_BLUR1 + "");
+        blur1.addActionListener(action);
+        
+        JMenuItem blur2 = new JMenuItem(ListenerFiltrosConvolucion.STR_MENU_BLUR2);
+        blur2.setName(ListenerFiltrosConvolucion.INT_MENU_BLUR2 + "");
+        blur2.addActionListener(action);
+        
+        blur.add(blur1);
+        blur.add(blur2);
+        
+        JMenu edge = new JMenu(ListenerFiltrosConvolucion.STR_MENU_EDGE_FILTER);
+        edge.setName(ListenerFiltrosConvolucion.INT_MENU_EDGE_FILTER + "");   
+        
+        JMenuItem edge1 = new JMenuItem(ListenerFiltrosConvolucion.STR_MENU_EDGE_FILTER1);
+        edge1.setName(ListenerFiltrosConvolucion.INT_MENU_EDGE_FILTER1 + "");
+        edge1.addActionListener(action);
+        
+        JMenuItem edge2 = new JMenuItem(ListenerFiltrosConvolucion.STR_MENU_EDGE_FILTER2);
+        edge2.setName(ListenerFiltrosConvolucion.INT_MENU_EDGE_FILTER2 + "");
+        edge2.addActionListener(action);
+        
+        edge.add(edge1);
+        edge.add(edge2);
+        
+        JMenu sharpen = new JMenu(ListenerFiltrosConvolucion.STR_MENU_SHARPEN);
+        sharpen.setName(ListenerFiltrosConvolucion.INT_MENU_SHARPEN + "");   
+        
+        JMenuItem sharpen1 = new JMenuItem(ListenerFiltrosConvolucion.STR_MENU_SHARPEN1);
+        sharpen1.setName(ListenerFiltrosConvolucion.INT_MENU_SHARPEN1 + "");
+        sharpen1.addActionListener(action);
+        
+        JMenuItem sharpen2 = new JMenuItem(ListenerFiltrosConvolucion.STR_MENU_SHARPEN2);
+        sharpen2.setName(ListenerFiltrosConvolucion.INT_MENU_SHARPEN2 + "");
+        sharpen2.addActionListener(action);
+        
+        JMenuItem sharpen3 = new JMenuItem(ListenerFiltrosConvolucion.STR_MENU_SHARPEN3);
+        sharpen3.setName(ListenerFiltrosConvolucion.INT_MENU_SHARPEN3 + "");
+        sharpen3.addActionListener(action);
+        
+        sharpen.add(sharpen1);
+        sharpen.add(sharpen2);
+        sharpen.add(sharpen3);
+        
+        JMenuItem emboss = new JMenuItem(ListenerFiltrosConvolucion.STR_MENU_EMBOSS);
+        emboss.setName(ListenerFiltrosConvolucion.INT_MENU_EMBOSS + "");
+        emboss.addActionListener(action);
+        
+        menuConvolucion.add(blur);
+        menuConvolucion.add(edge);
+        menuConvolucion.add(sharpen);
+        menuConvolucion.add(emboss);
+        
         return menuConvolucion;
     }
 
     private JMenu initMenuTransformaciones() {
         JMenu menu = new JMenu();
+        ListenerMenuTransformaciones action = new ListenerMenuTransformaciones();
         return menu;
     }
 
     private JMenu initMenuTonos() {
         JMenu menu = new JMenu();
+        ListenerMenuTonos action = new ListenerMenuTonos();
         return menu;
     }
 
     private JMenu initMenuMosaicos() {
         JMenu menu = new JMenu();
+        ListenerMenuMosaicos action = new ListenerMenuMosaicos();
         return menu;
     }
 
     private JMenu initMenuBlending() {
         JMenu menu = new JMenu();
+        ListenerMenuBlending action = new ListenerMenuBlending();
         return menu;
     }
 
     private JMenu initMenuOtros() {
         JMenu menu = new JMenu();
+        ListenerMenuOtros action = new ListenerMenuOtros();
         return menu;
     }
   
