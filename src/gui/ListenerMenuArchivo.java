@@ -3,6 +3,7 @@ package gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import javax.swing.JFileChooser;
@@ -60,14 +61,16 @@ class ListenerMenuArchivo implements ActionListener {
   private ProImageFrame frame;
   
   private JPanelImagen panelSrc;
+  private JPanelImagen panelDst;
   
   /**
    * Constructor que recibe la vista en donde se cargan los datos
    * @param vista El frame donde se cargarán los datos
    */
-  public ListenerMenuArchivo(ProImageFrame vista, JPanelImagen panel) {
+  public ListenerMenuArchivo(ProImageFrame vista, JPanelImagen panel, JPanelImagen paneldst) {
     this.frame = vista;
     this.panelSrc = panel;
+    this.panelDst = paneldst;
   }
   
   /**
@@ -115,7 +118,19 @@ class ListenerMenuArchivo implements ActionListener {
    * Se encarga de guardar la imagen modificada
    */
   private void guardar() {
-    // FALTA IMPLEMENTAR ESTA PARTE!!!
+    JFileChooser fileChooser = new JFileChooser();
+    fileChooser.setDialogTitle("Guardar imagen modificada");   
+
+    int userSelection = fileChooser.showSaveDialog(this.frame);
+
+    if (userSelection == JFileChooser.APPROVE_OPTION) {
+        File fileToSave = fileChooser.getSelectedFile();
+        File imagen = new File(panelDst.getNombreImagen());
+        imagen.renameTo(fileToSave);
+        /*
+        System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+        */
+    }
   }
   
 }

@@ -212,7 +212,7 @@ public class ProImageFrame extends JFrame {
    */
   private JMenu initMenuArchivo() {
     JMenu menuArchivo = new JMenu(ListenerMenuArchivo.MENU_ARCHIVO);
-    ListenerMenuArchivo action = new ListenerMenuArchivo(this, this.panelImgSource);
+    ListenerMenuArchivo action = new ListenerMenuArchivo(this, this.panelImgSource, this.panelImgTarget);
     
     JMenuItem guardar = new JMenuItem(ListenerMenuArchivo.STR_MENU_ARCHIVO_GUARDAR);
     guardar.setName(ListenerMenuArchivo.INT_MENU_ARCHIVO_GUARDAR + "");
@@ -383,32 +383,162 @@ public class ProImageFrame extends JFrame {
     }
 
     private JMenu initMenuTransformaciones() {
-        JMenu menu = new JMenu();
+        JMenu menu = new JMenu(ListenerMenuTransformaciones.MENU_TRANSFORMACIONES);
         ListenerMenuTransformaciones action = new ListenerMenuTransformaciones();
+        
+        JMenu icono = new JMenu(ListenerMenuTransformaciones.STR_MENU_ICONO);
+        icono.setName(ListenerMenuTransformaciones.INT_MENU_ICONO + "");   
+        
+        JMenuItem icono16 = new JMenuItem(ListenerMenuTransformaciones.STR_MENU_ICONO16);
+        icono16.setName(ListenerMenuTransformaciones.INT_MENU_ICONO16 + "");
+        icono16.addActionListener(action);
+        
+        JMenuItem icono32 = new JMenuItem(ListenerMenuTransformaciones.STR_MENU_ICONO32);
+        icono32.setName(ListenerMenuTransformaciones.INT_MENU_ICONO16 + "");
+        icono32.addActionListener(action);
+        
+        JMenuItem icono64 = new JMenuItem(ListenerMenuTransformaciones.STR_MENU_ICONO64);
+        icono64.setName(ListenerMenuTransformaciones.INT_MENU_ICONO64 + "");
+        icono64.addActionListener(action);
+        
+        icono.add(icono16);
+        icono.add(icono32);
+        icono.add(icono64);
+        
+        JMenuItem escalar = new JMenuItem(ListenerMenuTransformaciones.STR_MENU_ESCALAR);
+        escalar.setName(ListenerMenuTransformaciones.INT_MENU_ESCOLAR + "");
+        escalar.addActionListener(action);
+        
+        JMenuItem rotar = new JMenuItem(ListenerMenuTransformaciones.STR_MENU_ROTAR);
+        rotar.setName(ListenerMenuTransformaciones.INT_MENU_ROTAR + "");
+        rotar.addActionListener(action);
+        
+        menu.add(icono);
+        menu.add(escalar);
+        menu.add(rotar);
+        
         return menu;
     }
 
     private JMenu initMenuTonos() {
-        JMenu menu = new JMenu();
+        JMenu menu = new JMenu(ListenerMenuTonos.STR_MENU_TONOS);
         ListenerMenuTonos action = new ListenerMenuTonos();
+        
+        JMenu semi = new JMenu(ListenerMenuTonos.STR_MENU_SEMITONOS);
+        semi.setName(ListenerMenuTonos.INT_MENU_SEMITONOS + "");   
+        
+        JMenuItem puntos = new JMenuItem(ListenerMenuTonos.STR_MENU_SEMIPTS);
+        puntos.setName(ListenerMenuTonos.INT_MENU_SEMIPTS + "");
+        puntos.addActionListener(action);
+        
+        semi.add(puntos);
+        
+        JMenu ascii = new JMenu(ListenerMenuTonos.STR_MENU_ASCII);
+        ascii.setName(ListenerMenuTonos.INT_MENU_ASCII + "");   
+        
+        JMenuItem letras = new JMenuItem(ListenerMenuTonos.STR_MENU_LETRAS);
+        letras.setName(ListenerMenuTonos.INT_MENU_LETRAS + "");
+        letras.addActionListener(action);
+        
+        JMenuItem domino = new JMenuItem(ListenerMenuTonos.STR_MENU_DOMINO);
+        domino.setName(ListenerMenuTonos.INT_MENU_DOMINO + "");
+        domino.addActionListener(action);
+        
+        JMenuItem naipes = new JMenuItem(ListenerMenuTonos.STR_MENU_NAIPES);
+        naipes.setName(ListenerMenuTonos.INT_MENU_NAIPES + "");
+        naipes.addActionListener(action);
+        
+        ascii.add(letras);
+        ascii.add(domino);
+        ascii.add(naipes);        
+        
+        menu.add(semi);
+        menu.add(ascii);
+        
         return menu;
     }
 
     private JMenu initMenuMosaicos() {
-        JMenu menu = new JMenu();
+        JMenu menu = new JMenu(ListenerMenuMosaicos.STR_MENU_MOSAICOS);
         ListenerMenuMosaicos action = new ListenerMenuMosaicos();
+        
+        JMenuItem tradicional = new JMenuItem(ListenerMenuMosaicos.STR_MENU_TRADICIONAL);
+        tradicional.setName(ListenerMenuMosaicos.INT_MENU_TRADICIONAL + "");
+        tradicional.addActionListener(action);
+        
+        JMenuItem recursivo = new JMenuItem(ListenerMenuMosaicos.STR_MENU_RECURSIVO);
+        recursivo.setName(ListenerMenuMosaicos.INT_MENU_RECURSIVO + "");
+        recursivo.addActionListener(action);
+        
+        JMenuItem foto = new JMenuItem(ListenerMenuMosaicos.STR_MENU_FOTOMOSAICO);
+        foto.setName(ListenerMenuMosaicos.INT_MENU_FOTOMOSAICO + "");
+        foto.addActionListener(action);
+        
+        menu.add(tradicional);
+        menu.add(recursivo);
+        menu.add(foto);
+        
         return menu;
     }
 
     private JMenu initMenuBlending() {
-        JMenu menu = new JMenu();
+        JMenu menu = new JMenu(ListenerMenuBlending.STR_MENU_BLENDING );
         ListenerMenuBlending action = new ListenerMenuBlending();
+        
+        JMenuItem mezclar = new JMenuItem(ListenerMenuBlending.STR_MENU_MEZCLAR);
+        mezclar.setName(ListenerMenuBlending.INT_MENU_MEZCLAR + "");
+        mezclar.addActionListener(action);
+        
+        JMenuItem encimar = new JMenuItem(ListenerMenuBlending.STR_MENU_IMG);
+        encimar.setName(ListenerMenuBlending.INT_MENU_IMG + "");
+        encimar.addActionListener(action);
+        
+        JMenuItem marca = new JMenuItem(ListenerMenuBlending.STR_MENU_MARCA);
+        marca.setName(ListenerMenuBlending.INT_MENU_MARCA + "");
+        marca.addActionListener(action);
+        
+        menu.add(mezclar);
+        menu.add(encimar);
+        menu.add(marca);
+        
         return menu;
     }
 
     private JMenu initMenuOtros() {
-        JMenu menu = new JMenu();
+        JMenu menu = new JMenu(ListenerMenuOtros.STR_MENU_OTROS);
         ListenerMenuOtros action = new ListenerMenuOtros();
+        
+        JMenuItem oleo = new JMenuItem(ListenerMenuOtros.STR_MENU_OLEO);
+        oleo.setName(ListenerMenuOtros.INT_MENU_OLEO + "");
+        oleo.addActionListener(action);
+        
+        JMenuItem sepia = new JMenuItem(ListenerMenuOtros.STR_MENU_SEPIA);
+        sepia.setName(ListenerMenuOtros.INT_MENU_SEPIA + "");
+        sepia.addActionListener(action);
+        
+        JMenuItem alien = new JMenuItem(ListenerMenuOtros.STR_MENU_ALIEN);
+        alien.setName(ListenerMenuOtros.INT_MENU_ALIEN + "");
+        alien.addActionListener(action);
+        
+        JMenuItem pasaBajos = new JMenuItem(ListenerMenuOtros.STR_MENU_PASA_BAJOS);
+        pasaBajos.setName(ListenerMenuOtros.INT_MENU_PASA_BAJOS + "");
+        pasaBajos.addActionListener(action);
+        
+        JMenuItem pasaAltos = new JMenuItem(ListenerMenuOtros.STR_MENU_PASA_ALTOS);
+        pasaAltos.setName(ListenerMenuOtros.INT_MENU_PASA_ALTOS + "");
+        pasaAltos.addActionListener(action);
+        
+        JMenuItem estegano = new JMenuItem(ListenerMenuOtros.STR_MENU_ESTEGANO);
+        estegano.setName(ListenerMenuOtros.INT_MENU_ESTEGANO + "");
+        estegano.addActionListener(action);
+        
+        menu.add(oleo);
+        menu.add(sepia);
+        menu.add(alien);
+        menu.add(pasaBajos);
+        menu.add(pasaAltos);
+        menu.add(estegano);
+        
         return menu;
     }
   
