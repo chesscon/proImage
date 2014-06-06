@@ -2,13 +2,11 @@
 package filtros;
 
 import base.Manipulacion;
-import static base.Manipulacion.cargarImagen;
-import static base.Manipulacion.modificarDimensiones;
 import base.ProImageException;
+import transformaciones.TamanioImg;
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 import java.io.IOException;
-import static transformaciones.TamanioImg.reducir;
 
 /**
  *
@@ -33,8 +31,8 @@ public class Combinacion extends Manipulacion {
             String nameFile2, int nAncho,int nAlto) throws IOException, ProImageException {        
         int nAncho1 = nAncho/2;
         int nAncho2 = nAncho - nAncho1;
-        BufferedImage img1 = reducir(nameFile1, nAncho1, nAlto);
-        BufferedImage img2 = reducir(nameFile2, nAncho2, nAlto);
+        BufferedImage img1 = TamanioImg.reducir(nameFile1, nAncho1, nAlto);
+        BufferedImage img2 = TamanioImg.reducir(nameFile2, nAncho2, nAlto);
         
         modificarDimensiones(nAncho, nAlto);
        
@@ -76,8 +74,8 @@ public class Combinacion extends Manipulacion {
             String nameFile2, int nAncho,int nAlto) throws IOException, ProImageException {        
         int nAlto1 = nAlto/2;
         int nAlto2 = nAlto - nAlto1;
-        BufferedImage img1 = reducir(nameFile1, nAncho, nAlto1);
-        BufferedImage img2 = reducir(nameFile2, nAncho, nAlto2);
+        BufferedImage img1 = TamanioImg.reducir(nameFile1, nAncho, nAlto1);
+        BufferedImage img2 = TamanioImg.reducir(nameFile2, nAncho, nAlto2);
         
         modificarDimensiones(nAncho, nAlto);
        
@@ -133,8 +131,8 @@ public class Combinacion extends Manipulacion {
         int nAncho = Math.min(ancho1, ancho2);
         int nAlto = Math.min(alto1, alto2);
         System.out.println("Dimensiones Imagen a generar: " + nAncho + " , " + nAlto);
-        img1 = reducir(img1, nAncho, nAlto);
-        img2 = reducir(img2, nAncho, nAlto);
+        img1 = TamanioImg.reducir(img1, nAncho, nAlto);
+        img2 = TamanioImg.reducir(img2, nAncho, nAlto);
         
         Raster r1 = img1.getData();
         Raster r2 = img2.getData();

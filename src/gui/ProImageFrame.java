@@ -414,9 +414,9 @@ public class ProImageFrame extends JFrame {
         rotar.setName(ListenerMenuTransformaciones.INT_MENU_ROTAR + "");
         rotar.addActionListener(action);
         
-        menu.add(icono);
         menu.add(escalar);
         menu.add(rotar);
+        menu.add(icono);
         
         return menu;
     }
@@ -521,17 +521,58 @@ public class ProImageFrame extends JFrame {
         alien.setName(ListenerMenuOtros.INT_MENU_ALIEN + "");
         alien.addActionListener(action);
         
-        JMenuItem pasaBajos = new JMenuItem(ListenerMenuOtros.STR_MENU_PASA_BAJOS);
+        JMenu pasaBajos = new JMenu(ListenerMenuOtros.STR_MENU_PASA_BAJOS);
         pasaBajos.setName(ListenerMenuOtros.INT_MENU_PASA_BAJOS + "");
-        pasaBajos.addActionListener(action);
         
-        JMenuItem pasaAltos = new JMenuItem(ListenerMenuOtros.STR_MENU_PASA_ALTOS);
+        JMenuItem bajos1 = new JMenuItem(ListenerMenuOtros.STR_MENU_PASA_BAJOS1);
+        bajos1.setName(ListenerMenuOtros.INT_MENU_PASA_BAJOS1 + "");
+        bajos1.addActionListener(action);
+        
+        JMenuItem bajos2 = new JMenuItem(ListenerMenuOtros.STR_MENU_PASA_BAJOS2);
+        bajos2.setName(ListenerMenuOtros.INT_MENU_PASA_BAJOS2 + "");
+        bajos2.addActionListener(action);
+        bajos2.addActionListener(action);
+        
+        JMenuItem bajos3 = new JMenuItem(ListenerMenuOtros.STR_MENU_PASA_BAJOS3);
+        bajos3.setName(ListenerMenuOtros.INT_MENU_PASA_BAJOS3 + "");
+        bajos3.addActionListener(action);
+        bajos3.addActionListener(action);
+        
+        JMenuItem bajos4 = new JMenuItem(ListenerMenuOtros.STR_MENU_PASA_BAJOS4);
+        bajos4.setName(ListenerMenuOtros.INT_MENU_PASA_BAJOS4 + "");
+        bajos4.addActionListener(action);
+        bajos4.addActionListener(action);
+        
+        pasaBajos.add(bajos1);
+        pasaBajos.add(bajos2);
+        pasaBajos.add(bajos3);
+        pasaBajos.add(bajos4);
+        
+        JMenu pasaAltos = new JMenu(ListenerMenuOtros.STR_MENU_PASA_ALTOS);
         pasaAltos.setName(ListenerMenuOtros.INT_MENU_PASA_ALTOS + "");
-        pasaAltos.addActionListener(action);
+        
+        JMenuItem altos1 = new JMenuItem(ListenerMenuOtros.STR_MENU_PASA_ALTOS1);
+        altos1.setName(ListenerMenuOtros.INT_MENU_PASA_ALTOS1 + "");
+        altos1.addActionListener(action);
+        altos1.addActionListener(action);
+        
+        JMenuItem altos2 = new JMenuItem(ListenerMenuOtros.STR_MENU_PASA_ALTOS2);
+        altos2.setName(ListenerMenuOtros.INT_MENU_PASA_ALTOS2 + "");
+        altos2.addActionListener(action);
+        altos2.addActionListener(action);
+        
+        JMenuItem altos3 = new JMenuItem(ListenerMenuOtros.STR_MENU_PASA_ALTOS3);
+        altos3.setName(ListenerMenuOtros.INT_MENU_PASA_ALTOS3 + "");
+        altos3.addActionListener(action);
+        altos3.addActionListener(action);
         
         JMenuItem estegano = new JMenuItem(ListenerMenuOtros.STR_MENU_ESTEGANO);
         estegano.setName(ListenerMenuOtros.INT_MENU_ESTEGANO + "");
         estegano.addActionListener(action);
+        
+        pasaAltos.add(altos1);
+        pasaAltos.add(altos2);
+        pasaAltos.add(altos3);
         
         menu.add(oleo);
         menu.add(sepia);

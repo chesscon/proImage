@@ -3,6 +3,7 @@ package gui;
 
 import filtros.Convolucion;
 import filtros.FiltrosRGB;
+import filtros.FiltrosVarios;
 import filtros.Histograma;
 import static gui.ListenerFiltrosConvolucion.INT_MENU_BLUR1;
 import java.awt.event.ActionEvent;
@@ -26,7 +27,14 @@ class ListenerMenuOtros implements ActionListener {
     public static final String STR_MENU_SEPIA = "Sepia";
     public static final String STR_MENU_ALIEN = "Luz negra";
     public static final String STR_MENU_PASA_BAJOS = "Paso Bajos";
-    public static final String STR_MENU_PASA_ALTOS = "Paso altos";
+    public static final String STR_MENU_PASA_BAJOS1 = "bajos 1 (1/6)";
+    public static final String STR_MENU_PASA_BAJOS2 = "bajos 2 (1/9)";
+    public static final String STR_MENU_PASA_BAJOS3 = "bajos 3 (1/10)";
+    public static final String STR_MENU_PASA_BAJOS4 = "bajos 4 (1/16)";
+    public static final String STR_MENU_PASA_ALTOS = "Paso Altos";
+    public static final String STR_MENU_PASA_ALTOS1 = "altos 1";
+    public static final String STR_MENU_PASA_ALTOS2 = "altos 2";
+    public static final String STR_MENU_PASA_ALTOS3 = "altos 3";
     public static final String STR_MENU_ESTEGANO = "Esteganografía";
     
     public static final int INT_MENU_OLEO = 1;
@@ -35,6 +43,13 @@ class ListenerMenuOtros implements ActionListener {
     public static final int INT_MENU_PASA_BAJOS = 4;
     public static final int INT_MENU_PASA_ALTOS = 5;
     public static final int INT_MENU_ESTEGANO = 6;
+    public static final int INT_MENU_PASA_BAJOS1 = 7;
+    public static final int INT_MENU_PASA_BAJOS2 = 8;
+    public static final int INT_MENU_PASA_BAJOS3 = 9;
+    public static final int INT_MENU_PASA_BAJOS4 = 10;
+    public static final int INT_MENU_PASA_ALTOS1 = 11;
+    public static final int INT_MENU_PASA_ALTOS2 = 12;
+    public static final int INT_MENU_PASA_ALTOS3 = 13;
     
     private JPanelImagen panelSrc;
     
@@ -67,12 +82,27 @@ class ListenerMenuOtros implements ActionListener {
           case INT_MENU_ALIEN:
             //buffDst = Convolucion.convEdgeFilter2(imgSrc);
             break;
-          case INT_MENU_PASA_BAJOS:
-            //buffDst = Convolucion.convEmboss(imgSrc);
+          case INT_MENU_PASA_BAJOS1:
+            buffDst = FiltrosVarios.pasaBajo1(imgSrc);
             break;
-          case INT_MENU_PASA_ALTOS:
-            //buffDst = Convolucion.convSharpen(imgSrc);
+          case INT_MENU_PASA_BAJOS2:
+            buffDst = FiltrosVarios.pasaBajo2(imgSrc);
             break;
+          case INT_MENU_PASA_BAJOS3:
+            buffDst = FiltrosVarios.pasaBajo3(imgSrc);
+            break;
+          case INT_MENU_PASA_BAJOS4:
+            buffDst = FiltrosVarios.pasaBajo4(imgSrc);
+            break;
+          case INT_MENU_PASA_ALTOS1:
+            buffDst = FiltrosVarios.pasaAlto1(imgSrc);
+            break;
+          case INT_MENU_PASA_ALTOS2:
+            buffDst = FiltrosVarios.pasaAlto2(imgSrc);
+            break;
+          case INT_MENU_PASA_ALTOS3:
+            buffDst = FiltrosVarios.pasaAlto3(imgSrc);
+            break;  
           case INT_MENU_ESTEGANO:
             //buffDst = Convolucion.convSharpen2(imgSrc);
             break;
