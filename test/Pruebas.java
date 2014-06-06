@@ -25,7 +25,8 @@ public class Pruebas {
         //testConvolusiones();
         //testHistograma();
         //testBlending();
-       testSepia();
+       //testSepia();
+      testLuzNegra();
     }
     
     public static void testReducir1() throws IOException, ProImageException {
@@ -123,6 +124,13 @@ public class Pruebas {
       
       Manipulacion.generarImagen("imgs/sepia80.jpg", 
           FiltrosVarios.Sepia("imgs/pinguino.jpg", 80));
+    }
+    
+    public static void testLuzNegra() throws IOException, ProImageException {
+      Manipulacion.generarImagen("imgs/luzNegra2.jpg", 
+          FiltrosVarios.luzNegra("imgs/girasoles.jpg", 2));
+      Manipulacion.generarImagen("imgs/luzNegra4.jpg", 
+          FiltrosVarios.luzNegra("imgs/girasoles.jpg", 4));
     }
     
 }

@@ -591,16 +591,16 @@ public class ProImageFrame extends JFrame {
   void SliderBrilloVisible(boolean b) {
     this.panelHerramientas.SliderBrilloVisible(b);
   }
-
-  void SliderBrilloSetImg(String nombreImagen) {
-    this.panelHerramientas.setImgSrc(nombreImagen);
-  }
-
+  
   void SliderSepiaVisible(boolean b) {
     this.panelHerramientas.SliderSepiaVisible(b);
   }
+  
+  void SliderLuzNegraVisible(boolean b) {
+    this.panelHerramientas.SliderLuzNegraVisible(b);
+  }
 
-  void SliderSepiaSetImg(String nombreImagen) {
+  void setImgSrcPanel(String nombreImagen) {
     this.panelHerramientas.setImgSrc(nombreImagen);
   }
 
@@ -608,7 +608,7 @@ public class ProImageFrame extends JFrame {
     this.panelHerramientas.removeSliders();
   }
 
-  public JPanelHerramientas getHerramientas() {
+  protected JPanelHerramientas getHerramientas() {
     return this.panelHerramientas;
   }
   

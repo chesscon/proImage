@@ -2,7 +2,6 @@ package filtros;
 
 import base.Manipulacion;
 import java.awt.image.BufferedImage;
-import java.awt.image.Raster;
 import java.io.IOException;
 
 /**
@@ -102,6 +101,43 @@ public class FiltrosVarios extends Manipulacion {
         green = green <= 255 ? green : 255;
         green = green > 0 ? green : 0;
         
+        dstImg.setSample(i, j, 0, red); // Rojo
+        dstImg.setSample(i, j, 1, green); // Verde
+        dstImg.setSample(i, j, 2, blue); // Azul
+      }
+    }
+
+    buffOutImg.setData(dstImg);
+    return buffOutImg;
+  }
+  
+  public static BufferedImage luzNegra(String name, int peso)
+          throws IOException {
+    Manipulacion.cargarImagen(name);
+    peso = peso > 7 ? 7 : peso;
+    peso = peso < 1 ? 1 : peso;
+
+    int pixel[] = null;
+    int red, green, blue;
+    //int ancho = img.getWidth();
+    //int alto = img.getHeight();
+    float l;
+    for (int i = 0; i < anchoImg; i++) {
+      for (int j = 0; j < altoImg; j++) {
+        pixel = rasterImg.getPixel(i, j, pixel);
+        red = pixel[0];
+        green = pixel[1];
+        blue = pixel[2];
+        l = (222*red + 707*green + 71*blue) / (float) 1000;
+        red = (int)Math.abs(red -l)*peso;
+        green = (int)Math.abs(green -l)*peso;
+        blue = (int)Math.abs(blue -l)*peso;
+        red = red <= 255 ? red : 255;
+        red = red > 0 ? red : 0;
+        green = green <= 255 ? green : 255;
+        green = green > 0 ? green : 0;
+        blue = blue <= 255 ? blue : 255;
+        blue = blue > 0 ? blue : 0;
         dstImg.setSample(i, j, 0, red); // Rojo
         dstImg.setSample(i, j, 1, green); // Verde
         dstImg.setSample(i, j, 2, blue); // Azul

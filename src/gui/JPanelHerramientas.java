@@ -16,6 +16,8 @@ class JPanelHerramientas extends JPanel {
   private JSlider sliderBrillo;
   
   private JSlider sliderSepia;
+  
+  private JSlider sliderLuzNegra;
 
   private JPanelImagen panelDst;
 
@@ -23,8 +25,11 @@ class JPanelHerramientas extends JPanel {
   
   private ListenerSliderSepia actionSepia;
   
+  private ListenerSliderLuzNegra actionLuzNegra;
+  
   private boolean estaBrillo;
   private boolean estaSepia;
+  private boolean estaLuzNegra;
 
   public JPanelHerramientas(int ANCHO, JPanelImagen dst) {
     this.panelDst = dst;
@@ -34,6 +39,7 @@ class JPanelHerramientas extends JPanel {
     init();
     estaBrillo = false;
     estaSepia = false;
+    estaLuzNegra = false;
   }
 
   public void init() {
@@ -56,16 +62,28 @@ class JPanelHerramientas extends JPanel {
     sliderSepia.setVisible(false);
     actionSepia = new ListenerSliderSepia(this.panelDst, sliderSepia);
     sliderSepia.addChangeListener(actionSepia);
+    
+    sliderLuzNegra = new JSlider(JSlider.HORIZONTAL, 1, 7, 2);
+    sliderLuzNegra.setInverted(false);
+    sliderLuzNegra.setPaintTicks(false);
+    sliderLuzNegra.setMajorTickSpacing(1);
+    sliderLuzNegra.setMinorTickSpacing(0);
+    sliderLuzNegra.setPaintLabels(false);
+    sliderLuzNegra.setVisible(false);
+    actionLuzNegra = new ListenerSliderLuzNegra(this.panelDst, sliderLuzNegra);
+    sliderLuzNegra.addChangeListener(actionLuzNegra);
           //JPanel panel = frame.getPanelHerramientas();
     //buffDst = FiltrosRGB.filtroAlterarBrillo(imgSrc, brillo);
     //break;
     this.add(sliderBrillo);
     this.add(sliderSepia);
+    this.add(sliderLuzNegra);
   }
   
   public void setImgSrc(String imgSrc) {
     this.actionBrillo.setImgSrc(imgSrc);
     this.actionSepia.setImgSrc(imgSrc);
+    this.actionLuzNegra.setImgSrc(imgSrc);
   }
 
   public void SliderBrilloVisible(boolean b) {
@@ -74,6 +92,10 @@ class JPanelHerramientas extends JPanel {
 
   public void SliderSepiaVisible(boolean b) {
     this.sliderSepia.setVisible(b);
+  }
+  
+  void SliderLuzNegraVisible(boolean b) {
+    this.sliderLuzNegra.setVisible(b);
   }
   
   public void removeSliders() {
@@ -87,15 +109,26 @@ class JPanelHerramientas extends JPanel {
       this.remove(sliderSepia); 
       this.estaSepia = false;
     }
+    if (estaLuzNegra) {
+      this.SliderLuzNegraVisible(false);
+      this.remove(sliderLuzNegra);
+      this.estaLuzNegra = false;
+    }
   }
   
   public void addSliderBrillo() {
     if (estaSepia) {
       this.SliderSepiaVisible(false);
-     this.remove(sliderSepia);
-     this.estaSepia = false;
+      this.remove(sliderSepia);
+      this.estaSepia = false;
+    }
+    if (estaLuzNegra) {
+      this.SliderLuzNegraVisible(false);
+      this.remove(sliderLuzNegra);
+      this.estaLuzNegra = false;
     }
     if (!estaBrillo) {
+      this.sliderBrillo.setValue(0);
       this.SliderBrilloVisible(true);
       this.add(sliderBrillo);
       this.estaBrillo = true;
@@ -108,10 +141,35 @@ class JPanelHerramientas extends JPanel {
       this.remove(sliderBrillo);
       this.estaBrillo = false;
     }
+    if (estaLuzNegra) {
+      this.SliderLuzNegraVisible(false);
+      this.remove(sliderLuzNegra);
+      this.estaLuzNegra = false;
+    }
     if (!estaSepia) {
+      this.sliderBrillo.setValue(50);
       this.SliderSepiaVisible(true);
       this.add(sliderSepia);
       this.estaSepia = true;
+    }
+  }
+
+  void addSliderLuzNegra() {
+    if (estaBrillo) {
+      this.SliderBrilloVisible(false);
+      this.remove(sliderBrillo);
+      this.estaBrillo = false;
+    }
+    if (estaSepia) {
+      this.SliderSepiaVisible(false);
+      this.remove(sliderSepia);
+      this.estaSepia = false;
+    }
+    if (!estaLuzNegra) {
+      this.SliderLuzNegraVisible(true);
+      this.add(sliderLuzNegra);
+      this.estaLuzNegra = true;
+      this.sliderLuzNegra.setValue(2);
     }
   }
 

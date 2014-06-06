@@ -1,11 +1,9 @@
 
 package gui;
 
-import filtros.Convolucion;
 import filtros.FiltrosRGB;
 import filtros.FiltrosVarios;
 import filtros.Histograma;
-import static gui.ListenerFiltrosConvolucion.INT_MENU_BLUR1;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -82,12 +80,16 @@ class ListenerMenuOtros implements ActionListener {
           case INT_MENU_SEPIA:
             this.frame.SliderSepiaVisible(true);
             this.frame.getHerramientas().addSliderSepia();
-            this.frame.SliderSepiaSetImg(panelSrc.getNombreImagen());
+            this.frame.setImgSrcPanel(panelSrc.getNombreImagen());
             this.frame.pack();
             buffDst = FiltrosVarios.Sepia(imgSrc, 50);
             break;
-          case INT_MENU_ALIEN:
-            //buffDst = Convolucion.convEdgeFilter2(imgSrc);
+          case INT_MENU_ALIEN:            
+            this.frame.SliderLuzNegraVisible(true);
+            this.frame.getHerramientas().addSliderLuzNegra();
+            this.frame.setImgSrcPanel(panelSrc.getNombreImagen());
+            this.frame.pack();
+            buffDst = FiltrosVarios.luzNegra(imgSrc, 2);
             break;
           case INT_MENU_PASA_BAJOS1:
             buffDst = FiltrosVarios.pasaBajo1(imgSrc);

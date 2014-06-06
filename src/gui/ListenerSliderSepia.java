@@ -1,7 +1,6 @@
 
 package gui;
 
-import base.Manipulacion;
 import filtros.FiltrosRGB;
 import filtros.FiltrosVarios;
 import java.io.File;
@@ -34,7 +33,6 @@ public class ListenerSliderSepia implements ChangeListener {
   @Override
   public void stateChanged(ChangeEvent e) {
     try {
-      System.out.println("Evento sobre menu sepia");
       File tmp = File.createTempFile("img", ".jpg", new File(dirTmp));
       FiltrosRGB.generarImagen(tmp, FiltrosVarios.Sepia(imgSrc, slider.getValue()));
       panelDst.setImagen(tmp.getAbsolutePath());

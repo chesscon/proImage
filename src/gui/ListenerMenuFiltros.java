@@ -126,9 +126,10 @@ class ListenerMenuFiltros implements ActionListener {
         case INT_MENU_FILTROS_BRILLO:
           this.frame.getHerramientas().addSliderBrillo();
           this.frame.SliderBrilloVisible(true);
-          this.frame.SliderBrilloSetImg(panelSrc.getNombreImagen());
+          this.frame.setImgSrcPanel(panelSrc.getNombreImagen());
           this.frame.pack();
-          return;
+          buffDst = FiltrosRGB.filtroAlterarBrillo(imgSrc, 0);
+          break;
       }
 
       File tmp = File.createTempFile("img", ".jpg", new File(dirTmp));
