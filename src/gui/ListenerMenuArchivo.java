@@ -4,8 +4,6 @@ package gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
 import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
 
@@ -126,7 +124,12 @@ class ListenerMenuArchivo implements ActionListener {
     if (userSelection == JFileChooser.APPROVE_OPTION) {
         File fileToSave = fileChooser.getSelectedFile();
         File imagen = new File(panelDst.getNombreImagen());
-        imagen.renameTo(fileToSave);
+        
+        String file_name = fileToSave.toString();
+        if (!file_name.endsWith(".jpg"))
+            file_name += ".jpg";
+        
+        imagen.renameTo(new File (file_name));
         /*
         System.out.println("Save as file: " + fileToSave.getAbsolutePath());
         */

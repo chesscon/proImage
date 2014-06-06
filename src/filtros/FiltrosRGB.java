@@ -58,7 +58,7 @@ public class FiltrosRGB extends Manipulacion {
                 cant = 0;
                 for (int i2 = 0; i2 < nAncho && (i2+i) < anchoImg; i2++) {
                     for (int j2 = 0; j2 < nAlto && (j2+j) < altoImg; j2++) {
-                        pixel = rasterImg.getPixel(i2+j, j2+i, pixel);
+                        pixel = rasterImg.getPixel(i2+i, j2+j, pixel);
                         red += pixel[0];
                         green += pixel[1];
                         blue += pixel[2];

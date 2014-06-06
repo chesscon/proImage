@@ -68,7 +68,9 @@ public class ProImageFrame extends JFrame {
   /**
    * Panel para las herramientas (controles, botones) adicionales de cada filtro
    */
-  private JPanel panelHerramientas;
+  private JPanelHerramientas panelHerramientas;
+  
+  //private JSlideBrillo sliderBrillo;
   
   /**
    * Constructor que inicializa los valores por defecto para el frame
@@ -159,10 +161,8 @@ public class ProImageFrame extends JFrame {
     container.add (panelImgTarget, constraints);
 
     // panelHerramientas
-    panelHerramientas = new JPanelImagen();
-    panelHerramientas.setMinimumSize(new Dimension(ANCHO - 10, 30));
-    panelHerramientas.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-    panelHerramientas.setOpaque(false);        
+    panelHerramientas = new JPanelHerramientas(ANCHO, this.panelImgTarget);
+           
     constraints.gridx = 0;
     constraints.gridy = 2;
     //constraints.anchor = GridBagConstraints.WEST; 
@@ -240,7 +240,7 @@ public class ProImageFrame extends JFrame {
    */
   private JMenu initMenuFiltrosBasicos() {
     JMenu menuFiltros = new JMenu(ListenerMenuFiltros.MENU_FILTROS);
-    ListenerMenuFiltros action = new ListenerMenuFiltros(this.panelImgSource, this.panelImgTarget);
+    ListenerMenuFiltros action = new ListenerMenuFiltros(this, this.panelImgSource, this.panelImgTarget);
     
     JMenuItem brillo = new JMenuItem(ListenerMenuFiltros.STR_MENU_FILTROS_BRILLO);
     brillo.setName(ListenerMenuFiltros.INT_MENU_FILTROS_BRILLO + "");
@@ -321,7 +321,8 @@ public class ProImageFrame extends JFrame {
 
     private JMenu initMenuFiltrosConvolucion() {
         JMenu menuConvolucion = new JMenu(ListenerFiltrosConvolucion.MENU_CONVOLUCION);
-        ListenerFiltrosConvolucion action = new ListenerFiltrosConvolucion();
+        ListenerFiltrosConvolucion action = 
+                new ListenerFiltrosConvolucion(this.panelImgSource, this.panelImgTarget);
         
         JMenu blur = new JMenu(ListenerFiltrosConvolucion.STR_MENU_BLUR);
         blur.setName(ListenerFiltrosConvolucion.INT_MENU_BLUR + "");   
@@ -460,7 +461,7 @@ public class ProImageFrame extends JFrame {
 
     private JMenu initMenuMosaicos() {
         JMenu menu = new JMenu(ListenerMenuMosaicos.STR_MENU_MOSAICOS);
-        ListenerMenuMosaicos action = new ListenerMenuMosaicos();
+        ListenerMenuMosaicos action = new ListenerMenuMosaicos(this.panelImgSource, this.panelImgTarget);
         
         JMenuItem tradicional = new JMenuItem(ListenerMenuMosaicos.STR_MENU_TRADICIONAL);
         tradicional.setName(ListenerMenuMosaicos.INT_MENU_TRADICIONAL + "");
@@ -506,7 +507,7 @@ public class ProImageFrame extends JFrame {
 
     private JMenu initMenuOtros() {
         JMenu menu = new JMenu(ListenerMenuOtros.STR_MENU_OTROS);
-        ListenerMenuOtros action = new ListenerMenuOtros();
+        ListenerMenuOtros action = new ListenerMenuOtros(this.panelImgSource, this.panelImgTarget);
         
         JMenuItem oleo = new JMenuItem(ListenerMenuOtros.STR_MENU_OLEO);
         oleo.setName(ListenerMenuOtros.INT_MENU_OLEO + "");
@@ -541,5 +542,17 @@ public class ProImageFrame extends JFrame {
         
         return menu;
     }
+
+  JPanelHerramientas getPanelHerramientas() {
+    return this.panelHerramientas;
+  }
+
+  void SliderBrilloVisible(boolean b) {
+    this.panelHerramientas.SliderBrilloVisible(b);
+  }
+
+  void SliderBrilloSetImg(String nombreImagen) {
+    this.panelHerramientas.setImgSrc(nombreImagen);
+  }
   
 }

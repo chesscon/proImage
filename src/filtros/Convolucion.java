@@ -132,4 +132,39 @@ public class Convolucion extends Manipulacion {
         return aplicarMatriz(name, BLUR, true);
     }
     
+    public static BufferedImage convBlur2(String name) 
+            throws IOException {
+        return aplicarMatriz(name, BLUR2, true);
+    }
+    
+    public static BufferedImage convEdgeFilter(String name) 
+            throws IOException {
+        return aplicarMatriz(name, EDGE_FILTER, true);
+    }
+    
+    public static BufferedImage convEdgeFilter2(String name) 
+            throws IOException {
+        return aplicarMatriz(name, EDGE_FILTER2, true);
+    }
+    
+    public static BufferedImage convSharpen(String name) 
+            throws IOException {
+        return aplicarMatriz(name, SHARPEN, true);
+    }
+    
+    public static BufferedImage convSharpen2(String name) 
+            throws IOException {
+        return aplicarMatriz(name, SHARPEN2, true);
+    }
+    
+    public static BufferedImage convSharpen3(String name) 
+            throws IOException {
+        return aplicarMatriz(name, SHARPEN3, true);
+    }
+    
+    public static BufferedImage convEmboss(String name) 
+            throws IOException {
+        return aplicarMatriz(name, EMBOSS, true);
+    }
+    
 }
