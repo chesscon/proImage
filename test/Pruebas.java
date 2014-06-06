@@ -4,6 +4,7 @@ import base.ProImageException;
 import filtros.Convolucion;
 import java.io.IOException;
 import filtros.FiltrosRGB;
+import filtros.FiltrosVarios;
 
 
 /**
@@ -23,7 +24,8 @@ public class Pruebas {
         //testConvolusionIdentidad();
         //testConvolusiones();
         //testHistograma();
-        testBlending();
+        //testBlending();
+       testSepia();
     }
     
     public static void testReducir1() throws IOException, ProImageException {
@@ -110,6 +112,17 @@ public class Pruebas {
                 filtros.Combinacion.blending("imgs/pinguino.jpg", 
                         "imgs/girasoles.jpg", 0.5));
         */
+    }
+    
+    public static void testSepia() throws IOException, ProImageException {
+      Manipulacion.generarImagen("imgs/sepia10.jpg", 
+          FiltrosVarios.Sepia("imgs/pinguino.jpg", 10));
+      
+      Manipulacion.generarImagen("imgs/sepia50.jpg", 
+          FiltrosVarios.Sepia("imgs/pinguino.jpg", 50));
+      
+      Manipulacion.generarImagen("imgs/sepia80.jpg", 
+          FiltrosVarios.Sepia("imgs/pinguino.jpg", 80));
     }
     
 }

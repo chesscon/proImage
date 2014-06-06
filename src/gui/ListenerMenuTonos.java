@@ -25,10 +25,16 @@ class ListenerMenuTonos implements ActionListener {
     static int INT_MENU_NAIPES = 4;
     static int INT_MENU_DOMINO = 5;
     static int INT_MENU_LETRAS = 6;
+    
+    private ProImageFrame frame;
+    
+    public ListenerMenuTonos(ProImageFrame frame) {
+      this.frame = frame;
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.frame.limpiarHerramientas();
     }
     
 }

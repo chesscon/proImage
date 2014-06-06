@@ -322,7 +322,7 @@ public class ProImageFrame extends JFrame {
     private JMenu initMenuFiltrosConvolucion() {
         JMenu menuConvolucion = new JMenu(ListenerFiltrosConvolucion.MENU_CONVOLUCION);
         ListenerFiltrosConvolucion action = 
-                new ListenerFiltrosConvolucion(this.panelImgSource, this.panelImgTarget);
+                new ListenerFiltrosConvolucion(this, this.panelImgSource, this.panelImgTarget);
         
         JMenu blur = new JMenu(ListenerFiltrosConvolucion.STR_MENU_BLUR);
         blur.setName(ListenerFiltrosConvolucion.INT_MENU_BLUR + "");   
@@ -385,7 +385,7 @@ public class ProImageFrame extends JFrame {
 
     private JMenu initMenuTransformaciones() {
         JMenu menu = new JMenu(ListenerMenuTransformaciones.MENU_TRANSFORMACIONES);
-        ListenerMenuTransformaciones action = new ListenerMenuTransformaciones();
+        ListenerMenuTransformaciones action = new ListenerMenuTransformaciones(this);
         
         JMenu icono = new JMenu(ListenerMenuTransformaciones.STR_MENU_ICONO);
         icono.setName(ListenerMenuTransformaciones.INT_MENU_ICONO + "");   
@@ -423,7 +423,7 @@ public class ProImageFrame extends JFrame {
 
     private JMenu initMenuTonos() {
         JMenu menu = new JMenu(ListenerMenuTonos.STR_MENU_TONOS);
-        ListenerMenuTonos action = new ListenerMenuTonos();
+        ListenerMenuTonos action = new ListenerMenuTonos(this);
         
         JMenu semi = new JMenu(ListenerMenuTonos.STR_MENU_SEMITONOS);
         semi.setName(ListenerMenuTonos.INT_MENU_SEMITONOS + "");   
@@ -461,7 +461,7 @@ public class ProImageFrame extends JFrame {
 
     private JMenu initMenuMosaicos() {
         JMenu menu = new JMenu(ListenerMenuMosaicos.STR_MENU_MOSAICOS);
-        ListenerMenuMosaicos action = new ListenerMenuMosaicos(this.panelImgSource, this.panelImgTarget);
+        ListenerMenuMosaicos action = new ListenerMenuMosaicos(this, this.panelImgSource, this.panelImgTarget);
         
         JMenuItem tradicional = new JMenuItem(ListenerMenuMosaicos.STR_MENU_TRADICIONAL);
         tradicional.setName(ListenerMenuMosaicos.INT_MENU_TRADICIONAL + "");
@@ -484,7 +484,7 @@ public class ProImageFrame extends JFrame {
 
     private JMenu initMenuBlending() {
         JMenu menu = new JMenu(ListenerMenuBlending.STR_MENU_BLENDING );
-        ListenerMenuBlending action = new ListenerMenuBlending();
+        ListenerMenuBlending action = new ListenerMenuBlending(this);
         
         JMenuItem mezclar = new JMenuItem(ListenerMenuBlending.STR_MENU_MEZCLAR);
         mezclar.setName(ListenerMenuBlending.INT_MENU_MEZCLAR + "");
@@ -507,7 +507,7 @@ public class ProImageFrame extends JFrame {
 
     private JMenu initMenuOtros() {
         JMenu menu = new JMenu(ListenerMenuOtros.STR_MENU_OTROS);
-        ListenerMenuOtros action = new ListenerMenuOtros(this.panelImgSource, this.panelImgTarget);
+        ListenerMenuOtros action = new ListenerMenuOtros(this, this.panelImgSource, this.panelImgTarget);
         
         JMenuItem oleo = new JMenuItem(ListenerMenuOtros.STR_MENU_OLEO);
         oleo.setName(ListenerMenuOtros.INT_MENU_OLEO + "");
@@ -594,6 +594,22 @@ public class ProImageFrame extends JFrame {
 
   void SliderBrilloSetImg(String nombreImagen) {
     this.panelHerramientas.setImgSrc(nombreImagen);
+  }
+
+  void SliderSepiaVisible(boolean b) {
+    this.panelHerramientas.SliderSepiaVisible(b);
+  }
+
+  void SliderSepiaSetImg(String nombreImagen) {
+    this.panelHerramientas.setImgSrc(nombreImagen);
+  }
+
+  void limpiarHerramientas() {
+    this.panelHerramientas.removeSliders();
+  }
+
+  public JPanelHerramientas getHerramientas() {
+    return this.panelHerramientas;
   }
   
 }

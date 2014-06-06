@@ -25,6 +25,12 @@ class ListenerMenuTransformaciones implements ActionListener {
     static int INT_MENU_ICONO64 = 4;
     static int INT_MENU_ESCOLAR = 5;
     static int INT_MENU_ROTAR = 6;
+    
+    private ProImageFrame frame;
+    
+    public ListenerMenuTransformaciones(ProImageFrame frame) {
+      this.frame = frame;
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {

@@ -39,7 +39,6 @@ class ListenerSliderBrillo implements ChangeListener {
   public void stateChanged(ChangeEvent e) {
     try {
       File tmp = File.createTempFile("img", ".jpg", new File(dirTmp));
-      Manipulacion.generarImagenAleatoria(tmp.getAbsolutePath(), 500, 500);
       FiltrosRGB.generarImagen(tmp, FiltrosRGB.filtroAlterarBrillo(imgSrc, slider.getValue()));
       panelDst.setImagen(tmp.getAbsolutePath());
       tmp.deleteOnExit();

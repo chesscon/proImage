@@ -46,13 +46,16 @@ class ListenerFiltrosConvolucion implements ActionListener {
     static final int INT_MENU_SHARPEN3 = 9;
     static final int INT_MENU_EMBOSS = 10;
     
+    private ProImageFrame frame;
+    
     private JPanelImagen panelSrc;
     
     private JPanelImagen panelTarget;
     
     private final String dirTmp = "tmp";
     
-    public ListenerFiltrosConvolucion(JPanelImagen src, JPanelImagen dst) {
+    public ListenerFiltrosConvolucion(ProImageFrame frame, JPanelImagen src, JPanelImagen dst) {
+      this.frame = frame;
       this.panelSrc = src;
       this.panelTarget = dst;
     }
@@ -61,6 +64,7 @@ class ListenerFiltrosConvolucion implements ActionListener {
     public void actionPerformed(ActionEvent e) {
       try {
         String name = ((JMenuItem) e.getSource()).getName();
+        this.frame.limpiarHerramientas();
         //this.frame.SliderBrilloVisible(false);
         int value = Integer.parseInt(name);
         System.out.println("evento sobre menu convolucion: ..." + value);

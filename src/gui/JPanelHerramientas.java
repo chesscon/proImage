@@ -14,10 +14,17 @@ import javax.swing.border.LineBorder;
 class JPanelHerramientas extends JPanel {
 
   private JSlider sliderBrillo;
+  
+  private JSlider sliderSepia;
 
   private JPanelImagen panelDst;
 
   private ListenerSliderBrillo actionBrillo;
+  
+  private ListenerSliderSepia actionSepia;
+  
+  private boolean estaBrillo;
+  private boolean estaSepia;
 
   public JPanelHerramientas(int ANCHO, JPanelImagen dst) {
     this.panelDst = dst;
@@ -25,6 +32,8 @@ class JPanelHerramientas extends JPanel {
     this.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
     this.setOpaque(false);
     init();
+    estaBrillo = false;
+    estaSepia = false;
   }
 
   public void init() {
@@ -37,18 +46,73 @@ class JPanelHerramientas extends JPanel {
     sliderBrillo.setVisible(false);
     actionBrillo = new ListenerSliderBrillo(this.panelDst, sliderBrillo);
     sliderBrillo.addChangeListener(actionBrillo);
+    
+    sliderSepia = new JSlider(JSlider.HORIZONTAL, 0, 100, 50);
+    sliderSepia.setInverted(false);
+    sliderSepia.setPaintTicks(false);
+    sliderSepia.setMajorTickSpacing(10);
+    sliderSepia.setMinorTickSpacing(5);
+    sliderSepia.setPaintLabels(false);
+    sliderSepia.setVisible(false);
+    actionSepia = new ListenerSliderSepia(this.panelDst, sliderSepia);
+    sliderSepia.addChangeListener(actionSepia);
           //JPanel panel = frame.getPanelHerramientas();
     //buffDst = FiltrosRGB.filtroAlterarBrillo(imgSrc, brillo);
     //break;
     this.add(sliderBrillo);
+    this.add(sliderSepia);
   }
   
-  void setImgSrc(String imgSrc) {
+  public void setImgSrc(String imgSrc) {
     this.actionBrillo.setImgSrc(imgSrc);
+    this.actionSepia.setImgSrc(imgSrc);
   }
 
-  void SliderBrilloVisible(boolean b) {
+  public void SliderBrilloVisible(boolean b) {
     this.sliderBrillo.setVisible(b);
+  }
+
+  public void SliderSepiaVisible(boolean b) {
+    this.sliderSepia.setVisible(b);
+  }
+  
+  public void removeSliders() {
+    if (estaBrillo) {
+      this.SliderBrilloVisible(false);
+      this.remove(sliderBrillo);
+      this.estaBrillo = false;
+    }
+    if (estaSepia) {
+      this.SliderSepiaVisible(false);
+      this.remove(sliderSepia); 
+      this.estaSepia = false;
+    }
+  }
+  
+  public void addSliderBrillo() {
+    if (estaSepia) {
+      this.SliderSepiaVisible(false);
+     this.remove(sliderSepia);
+     this.estaSepia = false;
+    }
+    if (!estaBrillo) {
+      this.SliderBrilloVisible(true);
+      this.add(sliderBrillo);
+      this.estaBrillo = true;
+    }
+  }
+  
+  public void addSliderSepia() {
+    if (estaBrillo) {
+      this.SliderBrilloVisible(false);
+      this.remove(sliderBrillo);
+      this.estaBrillo = false;
+    }
+    if (!estaSepia) {
+      this.SliderSepiaVisible(true);
+      this.add(sliderSepia);
+      this.estaSepia = true;
+    }
   }
 
 }

@@ -51,13 +51,16 @@ class ListenerMenuOtros implements ActionListener {
     public static final int INT_MENU_PASA_ALTOS2 = 12;
     public static final int INT_MENU_PASA_ALTOS3 = 13;
     
+    private ProImageFrame frame;
+    
     private JPanelImagen panelSrc;
     
     private JPanelImagen panelTarget;
     
     private final String dirTmp = "tmp";
     
-    public ListenerMenuOtros(JPanelImagen src, JPanelImagen dst) {
+    public ListenerMenuOtros(ProImageFrame frame, JPanelImagen src, JPanelImagen dst) {
+      this.frame = frame;
       this.panelSrc = src;
       this.panelTarget = dst;
     }
@@ -66,7 +69,7 @@ class ListenerMenuOtros implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         try {
         String name = ((JMenuItem) e.getSource()).getName();
-        //this.frame.SliderBrilloVisible(false);
+        this.frame.SliderSepiaVisible(false);
         int value = Integer.parseInt(name);
         System.out.println("evento sobre menu Otros: ..." + value);
         //panelTarget.setImagen("imgs/girasoles.jpg");
@@ -77,7 +80,11 @@ class ListenerMenuOtros implements ActionListener {
             buffDst = Histograma.acuarela(imgSrc);
             break;
           case INT_MENU_SEPIA:
-            //buffDst = Convolucion.convEdgeFilter(imgSrc);
+            this.frame.SliderSepiaVisible(true);
+            this.frame.getHerramientas().addSliderSepia();
+            this.frame.SliderSepiaSetImg(panelSrc.getNombreImagen());
+            this.frame.pack();
+            buffDst = FiltrosVarios.Sepia(imgSrc, 50);
             break;
           case INT_MENU_ALIEN:
             //buffDst = Convolucion.convEdgeFilter2(imgSrc);

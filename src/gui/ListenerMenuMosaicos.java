@@ -33,9 +33,12 @@ class ListenerMenuMosaicos implements ActionListener {
     
     private JPanelImagen panelTarget;
     
+    private ProImageFrame frame;
+    
     private final String dirTmp = "tmp";
     
-    public ListenerMenuMosaicos(JPanelImagen src, JPanelImagen dst) {
+    public ListenerMenuMosaicos(ProImageFrame frame, JPanelImagen src, JPanelImagen dst) {
+      this.frame = frame;
       this.panelSrc = src;
       this.panelTarget = dst;
     }
@@ -45,6 +48,7 @@ class ListenerMenuMosaicos implements ActionListener {
         try {
         String name = ((JMenuItem) e.getSource()).getName();
         //this.frame.SliderBrilloVisible(false);
+        this.frame.limpiarHerramientas();
         int value = Integer.parseInt(name);
         System.out.println("evento sobre menu Mosaicos: ..." + value);
         //panelTarget.setImagen("imgs/girasoles.jpg");

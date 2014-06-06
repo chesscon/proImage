@@ -19,13 +19,16 @@ class ListenerMenuBlending implements ActionListener {
     public static final int INT_MENU_MEZCLAR = 1;
     public static final int INT_MENU_MARCA = 2;
     public static final int INT_MENU_IMG = 3;
+    
+    private ProImageFrame frame;
 
-    public ListenerMenuBlending() {
+    public ListenerMenuBlending(ProImageFrame frame) {
+      this.frame = frame;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.frame.limpiarHerramientas();
     }
     
 }

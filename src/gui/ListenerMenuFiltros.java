@@ -83,7 +83,7 @@ class ListenerMenuFiltros implements ActionListener {
   public void actionPerformed(ActionEvent e) {
     try {
       String name = ((JMenuItem) e.getSource()).getName();
-      this.frame.SliderBrilloVisible(false);
+      this.frame.limpiarHerramientas();
       int value = Integer.parseInt(name);
       System.out.println("evento sobre menu filtros: ..." + value);
       //panelTarget.setImagen("imgs/girasoles.jpg");
@@ -124,6 +124,7 @@ class ListenerMenuFiltros implements ActionListener {
           buffDst = FiltrosRGB.filtroGris2(imgSrc);
           break;
         case INT_MENU_FILTROS_BRILLO:
+          this.frame.getHerramientas().addSliderBrillo();
           this.frame.SliderBrilloVisible(true);
           this.frame.SliderBrilloSetImg(panelSrc.getNombreImagen());
           this.frame.pack();
