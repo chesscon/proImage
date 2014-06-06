@@ -10,11 +10,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.Icon;
 import javax.swing.JColorChooser;
 import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JSlider;
 
 /**
  * Controlador para el menu de los filtros
@@ -137,7 +134,7 @@ class ListenerMenuFiltros implements ActionListener {
       if (value == INT_MENU_FILTROS_RUIDO) {
         Manipulacion.generarImagenAleatoria(tmp.getAbsolutePath(), 500, 500);
       } else {
-        FiltrosRGB.generarImagen(tmp, buffDst);
+        Manipulacion.generarImagen(tmp, buffDst);
       }
 
       panelTarget.setImagen(tmp.getAbsolutePath());

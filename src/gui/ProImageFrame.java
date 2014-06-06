@@ -385,7 +385,8 @@ public class ProImageFrame extends JFrame {
 
     private JMenu initMenuTransformaciones() {
         JMenu menu = new JMenu(ListenerMenuTransformaciones.MENU_TRANSFORMACIONES);
-        ListenerMenuTransformaciones action = new ListenerMenuTransformaciones(this);
+        ListenerMenuTransformaciones action = 
+                new ListenerMenuTransformaciones(this, this.panelImgSource, this.panelImgTarget);
         
         JMenu icono = new JMenu(ListenerMenuTransformaciones.STR_MENU_ICONO);
         icono.setName(ListenerMenuTransformaciones.INT_MENU_ICONO + "");   
@@ -395,7 +396,7 @@ public class ProImageFrame extends JFrame {
         icono16.addActionListener(action);
         
         JMenuItem icono32 = new JMenuItem(ListenerMenuTransformaciones.STR_MENU_ICONO32);
-        icono32.setName(ListenerMenuTransformaciones.INT_MENU_ICONO16 + "");
+        icono32.setName(ListenerMenuTransformaciones.INT_MENU_ICONO32 + "");
         icono32.addActionListener(action);
         
         JMenuItem icono64 = new JMenuItem(ListenerMenuTransformaciones.STR_MENU_ICONO64);
@@ -407,7 +408,7 @@ public class ProImageFrame extends JFrame {
         icono.add(icono64);
         
         JMenuItem escalar = new JMenuItem(ListenerMenuTransformaciones.STR_MENU_ESCALAR);
-        escalar.setName(ListenerMenuTransformaciones.INT_MENU_ESCOLAR + "");
+        escalar.setName(ListenerMenuTransformaciones.INT_MENU_ESCALAR + "");
         escalar.addActionListener(action);
         
         JMenuItem rotar = new JMenuItem(ListenerMenuTransformaciones.STR_MENU_ROTAR);

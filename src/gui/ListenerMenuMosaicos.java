@@ -1,9 +1,8 @@
 
 package gui;
 
+import base.Manipulacion;
 import filtros.FiltrosRGB;
-import filtros.Histograma;
-import static gui.ListenerMenuOtros.INT_MENU_OLEO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -68,7 +67,7 @@ class ListenerMenuMosaicos implements ActionListener {
         
         File tmp = File.createTempFile("img", ".jpg", new File(dirTmp));
         
-        FiltrosRGB.generarImagen(tmp, buffDst);
+        Manipulacion.generarImagen(tmp, buffDst);
         tmp.deleteOnExit();
         panelTarget.setImagen(tmp.getAbsolutePath());
       } catch (IOException ex) {

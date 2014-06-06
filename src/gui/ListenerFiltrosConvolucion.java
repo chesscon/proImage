@@ -3,8 +3,6 @@ package gui;
 
 import base.Manipulacion;
 import filtros.Convolucion;
-import filtros.FiltrosRGB;
-import static gui.ListenerMenuFiltros.INT_MENU_FILTROS_RUIDO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -12,7 +10,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.Icon;
 import javax.swing.JMenuItem;
 
 /**
@@ -100,7 +97,7 @@ class ListenerFiltrosConvolucion implements ActionListener {
         
         File tmp = File.createTempFile("img", ".jpg", new File(dirTmp));
         
-        FiltrosRGB.generarImagen(tmp, buffDst);
+        Manipulacion.generarImagen(tmp, buffDst);
         tmp.deleteOnExit();
         panelTarget.setImagen(tmp.getAbsolutePath());
       } catch (IOException ex) {
