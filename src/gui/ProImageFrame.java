@@ -415,8 +415,8 @@ public class ProImageFrame extends JFrame {
         rotar.setName(ListenerMenuTransformaciones.INT_MENU_ROTAR + "");
         rotar.addActionListener(action);
         
-        menu.add(escalar);
-        menu.add(rotar);
+        //menu.add(escalar);
+        //menu.add(rotar);
         menu.add(icono);
         
         return menu;
@@ -479,14 +479,15 @@ public class ProImageFrame extends JFrame {
         
         menu.add(tradicional);
         menu.add(recursivo);
-        menu.add(foto);
+        //menu.add(foto);
         
         return menu;
     }
 
     private JMenu initMenuBlending() {
         JMenu menu = new JMenu(ListenerMenuBlending.STR_MENU_BLENDING );
-        ListenerMenuBlending action = new ListenerMenuBlending(this);
+        ListenerMenuBlending action = 
+                new ListenerMenuBlending(this, this.panelImgSource, this.panelImgTarget);
         
         JMenuItem mezclar = new JMenuItem(ListenerMenuBlending.STR_MENU_MEZCLAR);
         mezclar.setName(ListenerMenuBlending.INT_MENU_MEZCLAR + "");
@@ -501,8 +502,8 @@ public class ProImageFrame extends JFrame {
         marca.addActionListener(action);
         
         menu.add(mezclar);
-        menu.add(encimar);
-        menu.add(marca);
+        //menu.add(encimar);
+        //menu.add(marca);
         
         return menu;
     }

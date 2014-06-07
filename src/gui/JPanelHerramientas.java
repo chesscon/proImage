@@ -4,6 +4,7 @@ import filtros.FiltrosRGB;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JSlider;
 import javax.swing.border.LineBorder;
 
@@ -12,6 +13,8 @@ import javax.swing.border.LineBorder;
  * @author oscahern
  */
 class JPanelHerramientas extends JPanel {
+  
+  private JProgressBar current;
 
   private JSlider sliderBrillo;
   
@@ -40,6 +43,10 @@ class JPanelHerramientas extends JPanel {
     estaBrillo = false;
     estaSepia = false;
     estaLuzNegra = false;
+    
+    current = new JProgressBar(0, 100);
+    current.setValue(25);
+    current.setStringPainted(true);
   }
 
   public void init() {
@@ -80,6 +87,14 @@ class JPanelHerramientas extends JPanel {
     this.add(sliderLuzNegra);
   }
   
+  public void agregarBarra() {
+    this.panelDst.add(this.current);
+  }
+  
+  public void actualizarBarra(int val) {
+    this.current.setValue(val);
+  }
+  
   public void setImgSrc(String imgSrc) {
     this.actionBrillo.setImgSrc(imgSrc);
     this.actionSepia.setImgSrc(imgSrc);
@@ -114,6 +129,7 @@ class JPanelHerramientas extends JPanel {
       this.remove(sliderLuzNegra);
       this.estaLuzNegra = false;
     }
+    this.removeAll();
   }
   
   public void addSliderBrillo() {

@@ -3,6 +3,9 @@ package gui;
 
 import base.Manipulacion;
 import filtros.FiltrosRGB;
+import filtros.MosaicoRecursivo;
+import filtros.SemiPuntos;
+import filtros.Semitonos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -11,6 +14,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -58,7 +62,16 @@ class ListenerMenuMosaicos implements ActionListener {
             buffDst = FiltrosRGB.filtroMosaico(imgSrc, 5, 5);
             break;
           case INT_MENU_RECURSIVO:
-            //buffDst = Convolucion.convEdgeFilter(imgSrc);
+            String nameFile = JOptionPane.showInputDialog(frame, 
+                  "Introduce nombre para el archivo (): ", "Crear Semitonos", JOptionPane.INFORMATION_MESSAGE);
+          
+          String file = Semitonos.cuadricular(imgSrc, 4, 4, new MosaicoRecursivo(imgSrc, 0.3f));
+          File tmp = new File(file);
+          if (!nameFile.endsWith(".html"))
+            nameFile += ".html";
+          File f = new File(nameFile);
+          tmp.renameTo(f);
+          JOptionPane.showMessageDialog(frame, "La imagen ha sido guardada como: " + nameFile);
             break;
           case INT_MENU_FOTOMOSAICO:
             //buffDst = Convolucion.convEdgeFilter2(imgSrc);

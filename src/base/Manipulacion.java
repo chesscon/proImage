@@ -151,5 +151,13 @@ public class Manipulacion {
         promedio[2] /= cont;
         return promedio;
     }
+
+  public static int obtenerAlto() {
+    return Manipulacion.altoImg;
+  }
+
+  public static int obtenerAancho() {
+    return Manipulacion.anchoImg;
+  }
     
 }

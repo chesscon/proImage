@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package gui;
 
-import base.Manipulacion;
 import filtros.FiltrosRGB;
-import static gui.ListenerMenuFiltros.INT_MENU_FILTROS_RUIDO;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
