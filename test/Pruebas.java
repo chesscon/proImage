@@ -1,10 +1,16 @@
 
 import base.Manipulacion;
 import base.ProImageException;
+import filtros.AuxDomino;
+import filtros.AuxNaipes;
+import filtros.AuxSemitono;
 import filtros.Convolucion;
-import java.io.IOException;
 import filtros.FiltrosRGB;
 import filtros.FiltrosVarios;
+import filtros.SemiPuntos;
+import filtros.Semitonos;
+import java.io.File;
+import java.io.IOException;
 
 
 /**
@@ -26,7 +32,8 @@ public class Pruebas {
         //testHistograma();
         //testBlending();
        //testSepia();
-      testLuzNegra();
+      //testLuzNegra();
+      testSemitonos();
     }
     
     public static void testReducir1() throws IOException, ProImageException {
@@ -131,6 +138,19 @@ public class Pruebas {
           FiltrosVarios.luzNegra("imgs/girasoles.jpg", 2));
       Manipulacion.generarImagen("imgs/luzNegra4.jpg", 
           FiltrosVarios.luzNegra("imgs/girasoles.jpg", 4));
+    }
+    
+    public static void testSemitonos() throws IOException, ProImageException { 
+      
+      String file = Semitonos.cuadricular("imgs/im-22704.jpg", 4, 4, new AuxNaipes());
+      File tmp = new File(file);
+      File f = new File("prueba5.html");
+      tmp.renameTo(f);
+      
+      String file2 = Semitonos.cuadricular("imgs/im-22704.jpg", 4, 4, new AuxDomino());
+      File tmp2 = new File(file2);
+      File f2 = new File("prueba6.html");
+      tmp2.renameTo(f2);
     }
     
 }
