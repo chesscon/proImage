@@ -424,7 +424,8 @@ public class ProImageFrame extends JFrame {
 
     private JMenu initMenuTonos() {
         JMenu menu = new JMenu(ListenerMenuTonos.STR_MENU_TONOS);
-        ListenerMenuTonos action = new ListenerMenuTonos(this);
+        ListenerMenuTonos action =
+          new ListenerMenuTonos(this, this.panelImgSource, this.panelImgTarget);
         
         JMenu semi = new JMenu(ListenerMenuTonos.STR_MENU_SEMITONOS);
         semi.setName(ListenerMenuTonos.INT_MENU_SEMITONOS + "");   
