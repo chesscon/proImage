@@ -2,7 +2,7 @@ package gui;
 
 import base.Manipulacion;
 import filtros.FiltrosVarios;
-import filtros.Histograma;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -32,14 +32,18 @@ class ListenerMenuOtros implements ActionListener {
   public static final String STR_MENU_PASA_ALTOS1 = "altos 1";
   public static final String STR_MENU_PASA_ALTOS2 = "altos 2";
   public static final String STR_MENU_PASA_ALTOS3 = "altos 3";
-  public static final String STR_MENU_ESTEGANO = "Esteganografía";
+  public static final String STR_MENU_HISTOGRAMA = "Histograma";
+  public static final String STR_MENU_HISTOGRAMA_ROJO = "Rojo";
+  public static final String STR_MENU_HISTOGRAMA_AZUL = "Azul";
+  public static final String STR_MENU_HISTOGRAMA_VERDE = "Verde";
+  public static final String STR_MENU_HISTOGRAMA_GRIS = "Gris";
 
   public static final int INT_MENU_OLEO = 1;
   public static final int INT_MENU_SEPIA = 2;
   public static final int INT_MENU_ALIEN = 3;
   public static final int INT_MENU_PASA_BAJOS = 4;
   public static final int INT_MENU_PASA_ALTOS = 5;
-  public static final int INT_MENU_ESTEGANO = 6;
+  public static final int INT_MENU_HISTOGRAMA = 6;
   public static final int INT_MENU_PASA_BAJOS1 = 7;
   public static final int INT_MENU_PASA_BAJOS2 = 8;
   public static final int INT_MENU_PASA_BAJOS3 = 9;
@@ -47,6 +51,11 @@ class ListenerMenuOtros implements ActionListener {
   public static final int INT_MENU_PASA_ALTOS1 = 11;
   public static final int INT_MENU_PASA_ALTOS2 = 12;
   public static final int INT_MENU_PASA_ALTOS3 = 13;
+  public static final int INT_MENU_HISTOGRAMA_ROJO = 14;
+  public static final int INT_MENU_HISTOGRAMA_AZUL = 15;
+  public static final int INT_MENU_HISTOGRAMA_VERDE = 16;
+  public static final int INT_MENU_HISTOGRAMA_GRIS = 17;
+  
 
   private ProImageFrame frame;
 
@@ -73,7 +82,7 @@ class ListenerMenuOtros implements ActionListener {
       String imgSrc = this.panelSrc.getNombreImagen();
       switch (value) {
         case INT_MENU_OLEO:
-          buffDst = Histograma.acuarela(imgSrc);
+          buffDst = filtros.Histograma.acuarela(imgSrc);
           break;
         case INT_MENU_SEPIA:
           this.frame.SliderSepiaVisible(true);
@@ -110,9 +119,42 @@ class ListenerMenuOtros implements ActionListener {
         case INT_MENU_PASA_ALTOS3:
           buffDst = FiltrosVarios.pasaAlto3(imgSrc);
           break;
-        case INT_MENU_ESTEGANO:
-          //buffDst = Convolucion.convSharpen2(imgSrc);
-          break;
+        case INT_MENU_HISTOGRAMA_ROJO:
+          base.Histograma ObjHistograma=new base.Histograma();
+          int[][] histograma=ObjHistograma.histograma(this.panelSrc.getBufferedImage());
+          //DIBUJAMOS EL HISTOGRAMA
+          DibujarGrafico ObjDibujaHisto=new DibujarGrafico();
+          int[] histogramaCanal=new int[256];
+          System.arraycopy(histograma[0], 0, histogramaCanal, 0, histograma[0].length);
+          ObjDibujaHisto.crearHistograma(histogramaCanal, this.panelTarget, Color.RED);
+          return;
+        case INT_MENU_HISTOGRAMA_VERDE:
+          base.Histograma ObjHistograma2=new base.Histograma();
+          int[][] histograma2=ObjHistograma2.histograma(this.panelSrc.getBufferedImage());
+          //DIBUJAMOS EL HISTOGRAMA
+          DibujarGrafico ObjDibujaHisto2=new DibujarGrafico();
+          int[] histogramaCanal2=new int[256];
+          System.arraycopy(histograma2[1], 0, histogramaCanal2, 0, histograma2[1].length);
+          ObjDibujaHisto2.crearHistograma(histogramaCanal2, this.panelTarget, Color.GREEN);
+          return;
+        case INT_MENU_HISTOGRAMA_AZUL:
+          base.Histograma ObjHistograma3=new base.Histograma();
+          int[][] histograma3=ObjHistograma3.histograma(this.panelSrc.getBufferedImage());
+          //DIBUJAMOS EL HISTOGRAMA
+          DibujarGrafico ObjDibujaHisto3=new DibujarGrafico();
+          int[] histogramaCanal3=new int[256];
+          System.arraycopy(histograma3[2], 0, histogramaCanal3, 0, histograma3[2].length);
+          ObjDibujaHisto3.crearHistograma(histogramaCanal3, this.panelTarget, Color.BLUE);
+          return;
+        case INT_MENU_HISTOGRAMA_GRIS:
+          base.Histograma ObjHistograma4=new base.Histograma();
+          int[][] histograma4=ObjHistograma4.histograma(this.panelSrc.getBufferedImage());
+          //DIBUJAMOS EL HISTOGRAMA
+          DibujarGrafico ObjDibujaHisto4=new DibujarGrafico();
+          int[] histogramaCanal4=new int[256];
+          System.arraycopy(histograma4[4], 0, histogramaCanal4, 0, histograma4[4].length);
+          ObjDibujaHisto4.crearHistograma(histogramaCanal4, this.panelTarget, Color.BLACK);
+          return;
       }
 
       File tmp = File.createTempFile("img", ".jpg", new File(dirTmp));

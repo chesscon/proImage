@@ -44,7 +44,7 @@ public class Semitonos extends Manipulacion {
     "}");
       
       pw.println(" </style> </head>");
-      pw.println("<div style='margin:0px; width:" + anchoImg + "em; font-family: " + aux.getFont() + ";' >");
+      pw.println("<div style='margin:0px; width:" + ((anchoImg+1)/nAncho) + "em; font-family: " + aux.getFont() + ";' >");
       int[] pixel = null;
       int cant;
       int red, green, blue;

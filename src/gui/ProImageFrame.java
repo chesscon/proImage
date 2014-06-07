@@ -568,20 +568,41 @@ public class ProImageFrame extends JFrame {
         altos3.addActionListener(action);
         altos3.addActionListener(action);
         
-        JMenuItem estegano = new JMenuItem(ListenerMenuOtros.STR_MENU_ESTEGANO);
-        estegano.setName(ListenerMenuOtros.INT_MENU_ESTEGANO + "");
-        estegano.addActionListener(action);
-        
         pasaAltos.add(altos1);
         pasaAltos.add(altos2);
         pasaAltos.add(altos3);
+        
+        JMenu histograma = new JMenu(ListenerMenuOtros.STR_MENU_HISTOGRAMA);
+        histograma.setName(ListenerMenuOtros.INT_MENU_HISTOGRAMA + "");
+        //histograma.addActionListener(action);
+        
+        JMenuItem histoRojo = new JMenuItem(ListenerMenuOtros.STR_MENU_HISTOGRAMA_ROJO);
+        histoRojo.setName(ListenerMenuOtros.INT_MENU_HISTOGRAMA_ROJO + "");
+        histoRojo.addActionListener(action);
+        
+        JMenuItem histoVerde = new JMenuItem(ListenerMenuOtros.STR_MENU_HISTOGRAMA_VERDE);
+        histoVerde.setName(ListenerMenuOtros.INT_MENU_HISTOGRAMA_VERDE + "");
+        histoVerde.addActionListener(action);
+        
+        JMenuItem histoAzul = new JMenuItem(ListenerMenuOtros.STR_MENU_HISTOGRAMA_AZUL);
+        histoAzul.setName(ListenerMenuOtros.INT_MENU_HISTOGRAMA_AZUL + "");
+        histoAzul.addActionListener(action);
+        
+        JMenuItem histoGris = new JMenuItem(ListenerMenuOtros.STR_MENU_HISTOGRAMA_GRIS);
+        histoGris.setName(ListenerMenuOtros.INT_MENU_HISTOGRAMA_GRIS + "");
+        histoGris.addActionListener(action);
+        
+        histograma.add(histoRojo);
+        histograma.add(histoVerde);
+        histograma.add(histoAzul);
+        histograma.add(histoGris);
         
         menu.add(oleo);
         menu.add(sepia);
         menu.add(alien);
         menu.add(pasaBajos);
         menu.add(pasaAltos);
-        menu.add(estegano);
+        menu.add(histograma);
         
         return menu;
     }
@@ -607,6 +628,7 @@ public class ProImageFrame extends JFrame {
   }
 
   void limpiarHerramientas() {
+    this.panelImgTarget.removeAll();
     this.panelHerramientas.removeSliders();
   }
 
